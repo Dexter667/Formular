@@ -13,13 +13,13 @@ var DatumNarodenia = document.getElementById("inputDatumNarodenia");
 DatumNarodenia.onchange = function(){
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
     if (dateDatumNarodenia < refDochodokZeny){
-        // alert('zobraz input box');
+        alert('zobraz input box');
         for (i = 0; i < appBanners.length; i += 1) {
             appBanners[i].style.display = '';
         };
         }
     else {
-        // alert('skry input box');
+        alert('skry input box');
         for (i = 0; i < appBanners.length; i += 1) {
         appBanners[i].style.display = 'none';
         };
