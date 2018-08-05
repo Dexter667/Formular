@@ -1051,6 +1051,13 @@ pre code {
     max-width: 33.333333%;
     font-weight: bold;
   }
+  /*špeciálna class kvôli skrývaniu poľa v závislosti od dátumu narodenia*/
+  .col-md-4h {          
+    -ms-flex: 0 0 33.333333%;
+   flex: 0 0 33.333333%;
+   max-width: 33.333333%;
+   font-weight: bold;
+ }
   .col-md-4-r {
         -ms-flex: 0 0 33.333333%;
         flex: 0 0 33.333333%; 
