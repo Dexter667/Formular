@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+ <link rel="stylesheet" href="bootstrap.css">
+ <link rel="kontajner" href="kontajner.css">
+ </head>
+ <body>
+ 
+<div class="logo">
+  <img src="ILS_logo.jpg" class="rounded float-left">
+</div>
+ <!-- <strong>W-známka:</strong>  -->
+ <!-- <p> <h1>Stanovenie interného ratingu spotrebiteľa</h1></p> -->
+
+<!--  <script>
+    alert("hello, world!");
+  </script> -->
+
+test gitu
+
+test gitu 2 verzia
+
+ <div class="form-group">
+    &nbsp;
+</div>
+<div class="form-group">
+    &nbsp;
+</div>
+
+ <form>
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="strZiadatel">Žiadateľ</label>
+      <input type="text" class="form-control" id="inputMenoZiadatela" placeholder="Ferko Mrkvička">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="bPohlavie">Pohlavie</label>
+      <select class="form-control" id="gender">
+        <option>Muž</option>
+        <option>Žena</option>
+      </select>
+    </div>  
+
+    <div class="form-group col-md-3">
+        <label for="dDatumNarodenia">Dátum narodenia</label>
+        <input type="date" class="form-control" id="inputDatumNarodenia" value="1986-04-26">
+    </div>
+
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="strZiadatel">Mesiacov v súčasnom zamestnaní</label>
+      <input type="number" min=0 value=0 class="form-control" id="pocetMesiacovZamestany" >
+    </div>
+    
+    <div class="form-group col-md-4">
+      <label for="bTypZakaznika">Zákazník</label>
+      <select class="form-control" id="Zakaznik">
+          <option>Nový</option>
+          <option>Existujúci</option>
+        </select>
+    </div>
+
+     <div class="form-group col-md-3">
+          <label for="strZiadatel">Dní v omeškaní v ILS:</label>
+          <input type="number" min=0 value=0 class="form-control" id="pocetDniOmeskania" >
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="strZiadatel">Neplnoletých detí</label>
+      <input type="number" min=0 value=0 class="form-control" id="pocetNeplnoletychDeti" >
+    </div>
+    
+    <div class="form-group col-md-4">
+      <label for="strZiadatel">Plnoletých nezaopatrených detí</label>
+      <input type="number" min=0 value=0 class="form-control" id="pocetPlnoletychNezaopatrenychDeti" >
+    </div>
+
+     <div class="form-group col-md-3">
+          <label for="strZiadatel">Plnoletých vyživovaných </label>
+          <input type="number" min=0 value=0 class="form-control" id="pocetVyzivovanychOsob" >
+    </div>
+</div>  
+
+<div class="form-row">
+    <div class="form-group col-md-5">
+        <label for="nPrijemZiadatela">Čistý mesačný príjem žiadateľa</label>
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">€</div>
+                </div>
+                <input type="number" min=0 placeholder=1234,56 class="form-control" id="pocetNeplnoletychDeti" >
+            </div>
+    </div>
+
+    <div class="form-group col-md-4">
+        <div class="specialAlign1">
+            <label for="nPrijemSpoludlznika">Čistý mesačný príjem spoludlžníka</label>
+        </div>
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">€</div>
+                </div>
+                <input type="number" min=0 placeholder=789,01 class="form-control" id="PriejmSpoludlznika">
+            </div>
+    </div>
+
+
+     <div class="form-group col-md-3">
+          <label for="bTypSplatok">Typ splátok</label>
+          <select class="form-control" id="Zakaznik">
+              <option>Pravidelné</option>
+              <option>Nepravidelné</option>
+            </select>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="nDlzkaFinancovania">Dĺžka financovania v ILS v mesiacoch</label>
+      <input type="number" min=0 placeholder=36 class="form-control" id="DlzkaFinancovania">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="nSplatkaILS">Splátka s DPH a poistným</label>
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">€</div>
+                </div>
+                <input type="number" placeholder=300,89 min=0 class="form-control" id="splatkaILS" >
+            </div>
+    </div>
+    
+     <div class="form-group col-md-3">
+          <label for="nAkontacia">Akontácia v %</label>
+          <input type="number" min=0 class="form-control" id="Akontacia">
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-5">
+        <label for="nVyskaUveruILS">Výška úveru v ILS</label>
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">€</div>
+                </div>
+                <input type="number" min=0 placeholder=10000 class="form-control" id="VyskaUveruILS">
+            </div>
+    </div>
+   
+    <div class="form-group col-md-4">
+        <label for="nSplatkaILS">Počet vychovaných detí</label>
+        <input type="number" min=0 class="form-control" id="splatkaILS" >
+    </div>
+
+     <div class="form-group col-md-3">
+    </div>
+</div>  
+
+  <div class="accordion" id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Úver 1
+          </button>
+        </h5>
+      </div>
+  
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" >
+        <div class="card-body">
+          
+            <div class="form-row">
+                <div class="form-group col-md-5-r">
+                  <label for="dUkoncenieZmluvy1">Dátum ukončenia</label>
+                  <input type="date" class="form-control" value="2030-07-15" id="ukoncenieZmluvy1">
+                </div>
+                
+                <div class="form-group col-md-4-r">
+                    <label for="dKoniecAktualnejFixacie1">Dátum konca aktuálnej fixácie</label>
+                    <input type="date" class="form-control" value="2022-07-15" id="koniecAktualnejFixacie1">
+                </div>
+
+                <div class="form-group col-md-3-r">
+                        <label for="nZostatokIstinyUrok1">Zostatok istiny + úrok</label>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">€</div>
+                                </div>
+                                <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstinyUrok1">
+                            </div>
+                    </div>
+            
+<!--                  <div class="form-group col-md-3-r">
+                      <label for="nZostatokIstinyUrok1">Zostatok istiny + úrok</label>
+                      <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstinyUrok1">
+                </div> -->
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="nUrokovaMiera1">Aktuálna úroková miera úveru v %</label>
+                    <input type="number" class="form-control" placeholder="2" id="UrokovaMiera1">
+                </div>
+
+                <div class="form-group col-md-4-r">
+                        <label for="nZostotokIstiny1">Čistý zostatok istiny</label>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">€</div>
+                                </div>
+                                <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstiny1">
+                            </div>
+                </div>                
+
+                <div class="form-group col-md-3-r">
+                        <label for="nSplatkaUveru1">Spltáka úveru</label>
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">€</div>
+                                </div>
+                                <input type="number" min=0 class="form-control" placeholder=0 id="SplatkaUveru1">
+                            </div>
+                </div>
+
+<!--                 <div class="form-group col-md-4-r">
+                    <label for="nZostotokIstiny1">Čistý zostatok istiny</label>
+                    <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstiny1">
+                </div> -->
+            
+<!--                  <div class="form-group col-md-3-r">
+                      <label for="nSplatkaUveru1">Splátka úveru</label>
+                      <input type="number" min=0 class="form-control" placeholder=0 id="SplatkaUveru1">
+                </div>
+            </div> -->
+
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="bZebezpecenyNehnutelnostou1">Úver zabezpečený nehnuteľnosťou</label>
+                    <select class="form-control" id="ZabezpecenyNehnutelnostou1">
+                        <option>Nie</option>
+                        <option>Áno</option>
+                      </select>
+                </div>
+            </div>
+
+          </div>
+      </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+              Úver 2
+            </button>
+          </h5>
+        </div>
+    
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" >
+          <div class="card-body">
+            
+              <div class="form-row">
+                  <div class="form-group col-md-5-r">
+                    <label for="dUkoncenieZmluvy2">Dátum ukončenia</label>
+                    <input type="date" class="form-control" value="2030-07-15" id="ukoncenieZmluvy2">
+                  </div>
+                  
+                  <div class="form-group col-md-4-r">
+                      <label for="dKoniecAktualnejFixacie2">Dátum konca aktuálnej fixácie</label>
+                      <input type="date" class="form-control" value="2022-07-15" id="koniecAktualnejFixacie2">
+                  </div>
+              
+                   <div class="form-group col-md-3-r">
+                        <label for="nZostatokIstinyUrok2">Zostatok istiny + úrok</label>
+                        <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstinyUrok2">
+                  </div>
+              </div>
+  
+              <div class="form-row">
+                  <div class="form-group col-md-5">
+                      <label for="nUrokovaMiera2">Aktuálna úroková miera úveru v %</label>
+                      <input type="number" class="form-control" placeholder="2" id="UrokovaMiera2">
+                  </div>
+                  
+                  <div class="form-group col-md-4-r">
+                      <label for="nZostotokIstiny2">Čistý zostatok istiny </label>
+                      <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstiny2">
+                  </div>
+              
+                   <div class="form-group col-md-3-r">
+                        <label for="nSplatkaUveru2">Splátka úveru</label>
+                        <input type="number" min=0 class="form-control" placeholder=0 id="SplatkaUveru2">
+                  </div>
+              </div>
+  
+              <div class="form-row">
+                  <div class="form-group col-md-5">
+                      <label for="bZebezpecenyNehnutelnosto2">Úver zabezpečený nehnuteľnosťou</label>
+                      <select class="form-control" id="ZabezpecenyNehnutelnostou2">
+                          <option>Nie</option>
+                          <option>Áno</option>
+                        </select>
+                  </div>
+              </div>  
+            </div>
+        </div>
+      </div>
+      <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                Úver 3
+              </button>
+            </h5>
+          </div>
+      
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" >
+            <div class="card-body">
+              
+                <div class="form-row">
+                    <div class="form-group col-md-5-r">
+                      <label for="dUkoncenieZmluvy3">Dátum ukončenia</label>
+                      <input type="date" class="form-control" value="2030-07-15" id="ukoncenieZmluvy3">
+                    </div>
+                    
+                    <div class="form-group col-md-4-r">
+                        <label for="dKoniecAktualnejFixacie3">Dátum konca aktuálnej fixácie</label>
+                        <input type="date" class="form-control" value="2022-07-15" id="koniecAktualnejFixacie3">
+                    </div>
+                
+                     <div class="form-group col-md-3-r">
+                          <label for="nZostatokIstinyUrok3">Zostatok istiny + úrok</label>
+                          <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstinyUrok3">
+                    </div>
+                </div>
+    
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label for="nUrokovaMiera3">Aktuálna úroková miera úveru v %</label>
+                        <input type="number" class="form-control" placeholder="2" id="UrokovaMiera3">
+                    </div>
+                    
+                    <div class="form-group col-md-4-r">
+                        <label for="nZostotokIstiny3">Čistý zostatok istiny </label>
+                        <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstiny3">
+                    </div>
+                
+                     <div class="form-group col-md-3-r">
+                          <label for="nSplatkaUveru3">Splátka úveru</label>
+                          <input type="number" min=0 class="form-control" placeholder=0 id="SplatkaUveru3">
+                    </div>
+                </div>
+    
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label for="bZebezpecenyNehnutelnosto3">Úver zabezpečený nehnuteľnosťou</label>
+                        <select class="form-control" id="ZabezpecenyNehnutelnostou3">
+                            <option>Nie</option>
+                            <option>Áno</option>
+                          </select>
+                    </div>
+                </div>  
+              </div>
+          </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingFour">
+              <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                  Úver 4
+                </button>
+              </h5>
+            </div>
+        
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" >
+              <div class="card-body">
+                
+                  <div class="form-row">
+                      <div class="form-group col-md-5-r">
+                        <label for="dUkoncenieZmluvy4">Dátum ukončenia</label>
+                        <input type="date" class="form-control" value="2030-07-15" id="ukoncenieZmluvy4">
+                      </div>
+                      
+                      <div class="form-group col-md-4-r">
+                          <label for="dKoniecAktualnejFixacie4">Dátum konca aktuálnej fixácie</label>
+                          <input type="date" class="form-control" value="2022-07-15" id="koniecAktualnejFixacie4">
+                      </div>
+                  
+                       <div class="form-group col-md-3-r">
+                            <label for="nZostatokIstinyUrok4">Zostatok istiny + úrok</label>
+                            <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstinyUrok4">
+                      </div>
+                  </div>
+      
+                  <div class="form-row">
+                      <div class="form-group col-md-5">
+                          <label for="nUrokovaMiera4">Aktuálna úroková miera úveru v %</label>
+                          <input type="number" class="form-control" placeholder="2" id="UrokovaMiera4">
+                      </div>
+                      
+                      <div class="form-group col-md-4-r">
+                          <label for="nZostotokIstiny4">Čistý zostatok istiny </label>
+                          <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstiny4">
+                      </div>
+                  
+                       <div class="form-group col-md-3-r">
+                            <label for="nSplatkaUveru4">Splátka úveru</label>
+                            <input type="number" min=0 class="form-control" placeholder=0 id="SplatkaUveru4">
+                      </div>
+                  </div>
+      
+                  <div class="form-row">
+                      <div class="form-group col-md-5">
+                          <label for="bZebezpecenyNehnutelnosto4">Úver zabezpečený nehnuteľnosťou</label>
+                          <select class="form-control" id="ZabezpecenyNehnutelnostou4">
+                              <option>Nie</option>
+                              <option>Áno</option>
+                            </select>
+                      </div>
+                  </div>  
+                </div>
+            </div>
+          </div>
+  </div>
+    <script src="controller.js"></script>          
+    <script src="jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ </body>
+</html>
