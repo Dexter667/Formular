@@ -6,43 +6,48 @@ var refDochodokZeny = new date('1961-01-01'); */
 
 // alert('hell')
 
-var appBanners = document.getElementsByClassName('form-group col-md-4h'), i;
+var hideField = document.getElementsByClassName('form-group col-md-4h'), i;
 var refDochodokZeny = new Date('1961-01-01');
-var DatumNarodenia = document.getElementById("inputDatumNarodenia");
-var Pohlavie = ((document.getElementById('gender').value) == "Muž") ? false: true;
-
-DatumNarodenia.onchange = function(){
-    var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
-    if ((dateDatumNarodenia < refDochodokZeny) && (Pohlavie = true)){
-        // alert('zobraz input box');
-        for (i = 0; i < appBanners.length; i += 1) {
-            appBanners[i].style.display = '';
-        };
-        }
-    else {
-        // alert('skry input box');
-        for (i = 0; i < appBanners.length; i += 1) {
-        appBanners[i].style.display = 'none';
-        };
-    }
-}
-
 
 function checkGender(){
+    var DatumNarodenia = document.getElementById("inputDatumNarodenia");
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
-    if ((dateDatumNarodenia < refDochodokZeny) && (Pohlavie = true)){
+    var chkPohlavie = ((document.getElementById('Pohlavie').value) == "Muž") ? false: true;
+    if ((dateDatumNarodenia < refDochodokZeny) && (chkPohlavie == true)){
         // alert('zobraz input box');
-        for (i = 0; i < appBanners.length; i += 1) {
-            appBanners[i].style.display = '';
+        for (i = 0; i < hideField.length; i += 1) {
+            hideField[i].style.display = '';
         };
         }
     else {
         // alert('skry input box');
-        for (i = 0; i < appBanners.length; i += 1) {
-        appBanners[i].style.display = 'none';
+        for (i = 0; i < hideField.length; i += 1) {
+            hideField[i].style.display = 'none';
         };
     }
 }
+
+document.getElementById("inputDatumNarodenia").addEventListener("change", checkGender);
+document.getElementById("Pohlavie").addEventListener("change", checkGender);
+
+/* DatumNarodenia.onchange = function(){
+    var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
+    if ((dateDatumNarodenia < refDochodokZeny) && (Pohlavie = true)){
+        // alert('zobraz input box');
+        for (i = 0; i < hideField.length; i += 1) {
+            hideField[i].style.display = '';
+        };
+        }
+    else {
+        // alert('skry input box');
+        for (i = 0; i < hideField.length; i += 1) {
+        hideField[i].style.display = 'none';
+        };
+    }
+} */
+
+
+
 
 /* if (hour < 18) {
     greeting = "Good day";
