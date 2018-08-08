@@ -1057,6 +1057,7 @@ pre code {
    flex: 0 0 33.333333%;
    max-width: 33.333333%;
    font-weight: bold;
+   /* visibility: hidden; */
  }
   .col-md-4-r {
         -ms-flex: 0 0 33.333333%;

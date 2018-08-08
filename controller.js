@@ -1,10 +1,36 @@
-/* var datum1 = document.getElementById('inputDatumNarodenia').value;
-var refDochodokZeny = new date('1961-01-01'); */
+Date.isLeapYear = function (year) { 
+    return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)); 
+};
+Date.getDaysInMonth = function (year, month) {
+    return [31, (Date.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+};
+Date.prototype.isLeapYear = function () { 
+    return Date.isLeapYear(this.getFullYear()); 
+};
+Date.prototype.getDaysInMonth = function () { 
+    return Date.getDaysInMonth(this.getFullYear(), this.getMonth());
+};
+Date.prototype.addMonths = function (value) {
+    var n = this.getDate();
+    this.setDate(1);
+    this.setMonth(this.getMonth() + value);
+    this.setDate(Math.min(n, this.getDaysInMonth()));
+    return this;
+};
+Date.prototype.addDays = function (value) {
+    this.setDate(this.getDate() + value * 1);
+    return this;
+};
 
-// document.write(datum1);
 
+var myDate = new Date("08/08/2018");
+var result1 = myDate.addMonths(-744);
 
-// alert('hell')
+var myDate2 = result1;
+var result2 = myDate2.addDays(-139);
+
+alert(result2);
+
 
 var hideField = document.getElementsByClassName('form-group col-md-4h'), i;
 var refDochodokZeny = new Date('1961-01-01');
@@ -14,117 +40,20 @@ function checkGender(){
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
     var chkPohlavie = ((document.getElementById('Pohlavie').value) == "Muž") ? false: true;
     if ((dateDatumNarodenia < refDochodokZeny) && (chkPohlavie == true)){
+        document.getElementById('hideclass').style.visibility = "visible";
         // alert('zobraz input box');
-        for (i = 0; i < hideField.length; i += 1) {
+/*         for (i = 0; i < hideField.length; i += 1) {
             hideField[i].style.display = '';
-        };
+        }; */
         }
     else {
+        document.getElementById('hideclass').style.visibility = "hidden";
         // alert('skry input box');
-        for (i = 0; i < hideField.length; i += 1) {
+/*         for (i = 0; i < hideField.length; i += 1) {
             hideField[i].style.display = 'none';
-        };
+        }; */
     }
 }
 
 document.getElementById("inputDatumNarodenia").addEventListener("change", checkGender);
 document.getElementById("Pohlavie").addEventListener("change", checkGender);
-
-/* DatumNarodenia.onchange = function(){
-    var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
-    if ((dateDatumNarodenia < refDochodokZeny) && (Pohlavie = true)){
-        // alert('zobraz input box');
-        for (i = 0; i < hideField.length; i += 1) {
-            hideField[i].style.display = '';
-        };
-        }
-    else {
-        // alert('skry input box');
-        for (i = 0; i < hideField.length; i += 1) {
-        hideField[i].style.display = 'none';
-        };
-    }
-} */
-
-
-
-
-/* if (hour < 18) {
-    greeting = "Good day";
-} else {
-    greeting = "Good evening";
-} */
-
-//Dátum
-
-/* $('document').ready(function(){
-    $('#inputDatumNarodenia').on('click', function () {
-        var end = $('#datetimepicker').val()
-        alert(end);
-    });
-)} */
-// alert("Hello world");
-
-/* var myHeading = document.querySelector("#test1");
-myHeading.textContent = "pojebali kone voz!"; */
-
-/* var labelle = document.getElementById("test1").innerHTML;
-alert(labelle);
-
-var labelle = document.getElementById("test1").innerHTML;
-alert(labelle); */
-
-// document.getElementById("nSplatkaILS").style.display = 'none';
-
-/* $(document).ready(function(){
-    $("#baton").click(function(event){
-        $("form-group col-md-4 s1").hide();
-        // $("#item").show();
-    });
-  });
- */
-
-
-
-
-/* var choicefile = document.getElementById("inputMenoZiadatela");
-
-    choicefile.onchange = function(){
-    alert('File selected')
-    } */
-
-    // alert('hekk');
-
-
-/*     var appBanners = document.getElementsByClassName('form-group col-md-4-h'), i;
-
-    for (i = 0; i < appBanners.length; i += 1) {
-    appBanners[i].style.display = '';
-    } */
-
-// alert('hello world');
-
-/*     var datum1 = document.getElementById('inputDatumNarodenia').value;
-    var refDochodokZeny = new date('1961-01-01'); */
-
-    // document.write(datum1);
-
-/*     $(document).ready(function() {
-        var datum1 = 11 /*document.getElementById('inputDatumNarodenia').value;
-        alert("your total is :"+ datum1 +"rs");
-        }); */
-
-    // alert('datum1');
-
-/*     if (choicefile > refDochodokZeny) {
-        var appBanners = document.getElementsByClassName('form-group col-md-4-h'), i;
-
-        for (i = 0; i < appBanners.length; i += 1) {
-        appBanners[i].style.display = '';
-        }}
-    else {
-    var appBanners = document.getElementsByClassName('form-group col-md-4-h'), i;
-
-    for (i = 0; i < appBanners.length; i += 1) {
-    appBanners[i].style.display = 'none';
-    }} */
