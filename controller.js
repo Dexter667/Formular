@@ -23,17 +23,21 @@ Date.prototype.addDays = function (value) {
 };
 
 
-var myDate = new Date("08/08/2018");
+var myDate = new Date();
 var result1 = myDate.addMonths(-744);
 
 var myDate2 = result1;
 var result2 = myDate2.addDays(-139);
 
-alert(result2);
+alert(result2.toLocaleDateString());
 
+function chekRentirementlDate(){
 
+}
+
+/*Kontrola dôchodkového veku u žien narodených pred 01.01.1962*/
 var hideField = document.getElementsByClassName('form-group col-md-4h'), i;
-var refDochodokZeny = new Date('1961-01-01');
+var refDochodokZeny = new Date('1962-01-01');
 
 function checkGender(){
     var DatumNarodenia = document.getElementById("inputDatumNarodenia");
