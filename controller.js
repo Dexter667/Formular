@@ -23,15 +23,33 @@ Date.prototype.addDays = function (value) {
 };
 
 
-var myDate = new Date();
+/* var myDate = new Date();
 var result1 = myDate.addMonths(-744);
+var dateRetirementLimit = result1.addDays(-139);
+var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value); */
 
-var myDate2 = result1;
-var result2 = myDate2.addDays(-139);
+// alert(dateRetirementLimit.toLocaleDateString());
+// alert(dateDatumNarodenia.toLocaleDateString());
 
-alert(result2.toLocaleDateString());
+// alert(result2-dateDatumNarodenia);
+
+window = onbeforeunload = chekRentirementlDate();
 
 function chekRentirementlDate(){
+    var myDate = new Date();
+    var result1 = myDate.addMonths(-744);
+    var dateRetirementLimit = result1.addDays(-139);
+    var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
+    var datePolovicaLeasingu = new Date(myDate.addMonths(document.getElementById()))
+    var bDochodkovyVek
+    if(dateDatumNarodenia < dateRetirementLimit){
+        bDochodkovyVek = true;
+        // alert(bDochodkovyVek);
+    }
+    else {
+        bDochodkovyVek = false
+        // alert(bDochodkovyVek);
+    }
 
 }
 
@@ -44,20 +62,13 @@ function checkGender(){
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
     var chkPohlavie = ((document.getElementById('Pohlavie').value) == "Muž") ? false: true;
     if ((dateDatumNarodenia < refDochodokZeny) && (chkPohlavie == true)){
-        document.getElementById('hideclass').style.visibility = "visible";
-        // alert('zobraz input box');
-/*         for (i = 0; i < hideField.length; i += 1) {
-            hideField[i].style.display = '';
-        }; */
+        document.getElementById("hideclass").style.visibility = "visible";
         }
     else {
-        document.getElementById('hideclass').style.visibility = "hidden";
-        // alert('skry input box');
-/*         for (i = 0; i < hideField.length; i += 1) {
-            hideField[i].style.display = 'none';
-        }; */
+        document.getElementById("hideclass").style.visibility = "hidden";
     }
 }
 
 document.getElementById("inputDatumNarodenia").addEventListener("change", checkGender);
+document.getElementById("inputDatumNarodenia").addEventListener("change", chekRentirementlDate);
 document.getElementById("Pohlavie").addEventListener("change", checkGender);

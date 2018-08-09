@@ -1578,7 +1578,7 @@ pre code {
 .table td {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .table thead th {
@@ -5167,6 +5167,7 @@ input[type="button"].btn-block {
 .media-body {
   -ms-flex: 1;
   flex: 1;
+  text-align: justify; /*dx*/
 }
 
 .list-group {
