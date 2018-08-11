@@ -31,10 +31,13 @@
         </div>
 </div>
 
-<div class="media-body">
+<div class="media-body info">
     <strong>Žiadateľka zavŕši dôchodkový vek skôr, ako skončí polovica doby financovania.
             Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.</strong>
 </div>
+
+<!-- Žiadateľka zavŕši dôchodkový vek skôr, ako skončí polovica doby financovania.
+Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom. -->
 
 <div class="form-group">
     &nbsp;
@@ -43,88 +46,88 @@
 <form>
   <div class="form-row">
     <div class="form-group col-md-5">
-      <label for="strZiadatel" id="test1">Žiadateľ</label>
+      <label for="inputMenoZiadatela" id="test1">Žiadateľ</label>
       <input type="text" class="form-control" id="inputMenoZiadatela" placeholder="Ferko Mrkvička">
     </div>
 
     <div class="form-group col-md-4">
-      <label for="bPohlavie">Pohlavie</label>
-      <select class="form-control" id="Pohlavie" value="Žena">
+      <label for="Pohlavie">Pohlavie</label>
+      <select class="form-control" id="pohlavie" value="Žena">
         <option selected>Muž</option>
         <option>Žena</option>
       </select>
     </div>  
 
     <div class="form-group col-md-3">
-        <label for="dDatumNarodenia">Dátum narodenia</label>
+        <label for="inputDatumNarodenia">Dátum narodenia</label>
         <input type="date" class="form-control" id="inputDatumNarodenia" value="1956-04-26">
     </div>
 </div>
 
 <div class="form-row">
     <div class="form-group col-md-5">
-      <label for="strZiadatel">Mesiacov v súčasnom zamestnaní</label>
+      <label for="pocetMesiacovZamestany">Mesiacov v súčasnom zamestnaní</label>
       <input type="number" min=0 value=0 class="form-control" id="pocetMesiacovZamestany" >
     </div>
     
     <div class="form-group col-md-4">
-      <label for="bTypZakaznika">Zákazník</label>
-      <select class="form-control" id="Zakaznik">
+      <label for="typZakaznika">Zákazník</label>
+      <select class="form-control" id="typZakaznika">
           <option>Nový</option>
           <option>Existujúci</option>
         </select>
     </div>
 
      <div class="form-group col-md-3">
-          <label for="strZiadatel">Dní v omeškaní v ILS:</label>
+          <label for="pocetDniOmeskania">Dní v omeškaní v ILS:</label>
           <input type="number" min=0 value=0 class="form-control" id="pocetDniOmeskania" >
     </div>
 </div>
 
 <div class="form-row">
     <div class="form-group col-md-5">
-      <label for="strZiadatel">Neplnoletých detí</label>
+      <label for="pocetNeplnoletychDeti">Neplnoletých detí</label>
       <input type="number" min=0 value=0 class="form-control" id="pocetNeplnoletychDeti" >
     </div>
     
     <div class="form-group col-md-4">
-      <label for="strZiadatel">Plnoletých nezaopatrených detí</label>
+      <label for="pocetPlnoletychNezaopatrenychDeti">Plnoletých nezaopatrených detí</label>
       <input type="number" min=0 value=0 class="form-control" id="pocetPlnoletychNezaopatrenychDeti" >
     </div>
 
      <div class="form-group col-md-3">
-          <label for="strZiadatel">Plnoletých vyživovaných </label>
+          <label for="pocetVyzivovanychOsob">Plnoletých vyživovaných </label>
           <input type="number" min=0 value=0 class="form-control" id="pocetVyzivovanychOsob" >
     </div>
 </div>  
 
 <div class="form-row">
     <div class="form-group col-md-5">
-        <label for="nPrijemZiadatela">Čistý mesačný príjem žiadateľa</label>
+        <label for="cistyPrijemziadatela">Čistý mesačný príjem žiadateľa</label>
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">€</div>
                 </div>
-                <input type="number" min=0 placeholder=1234,56 class="form-control" id="pocetNeplnoletychDeti" >
+                <input type="number" min=0 placeholder=1234,56 class="form-control" id="cistyPrijemziadatela" >
             </div>
     </div>
 
     <div class="form-group col-md-4">
         <div class="specialAlign1">
-            <label for="nPrijemSpoludlznika">Čistý mesačný príjem spoludlžníka</label>
+            <label for="prijemSpoludlznika">Čistý mesačný príjem spoludlžníka</label>
         </div>
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">€</div>
                 </div>
-                <input type="number" min=0 placeholder=789,01 class="form-control" id="PriejmSpoludlznika">
+                <input type="number" min=0 placeholder=789,01 class="form-control" id="prijemSpoludlznika">
             </div>
     </div>
 
 
      <div class="form-group col-md-3">
-          <label for="bTypSplatok">Typ splátok</label>
-          <select class="form-control" id="Zakaznik">
+          <label for="typSplatok">Typ splátok</label>
+          <select class="form-control" id="typSplatok">
               <option>Pravidelné</option>
               <option>Nepravidelné</option>
             </select>
@@ -133,12 +136,12 @@
 
 <div class="form-row">
     <div class="form-group col-md-5">
-      <label for="nDlzkaFinancovania">Dĺžka financovania v ILS v mesiacoch</label>
-      <input type="number" min=0 placeholder=36 class="form-control" id="DlzkaFinancovania">
+      <label for="dlzkaFinancovania">Dĺžka financovania v ILS v mesiacoch</label>
+      <input type="number" min=0 value=36 class="form-control" id="dlzkaFinancovania">
     </div>
 
     <div class="form-group col-md-4">
-        <label for="nSplatkaILS">Splátka s DPH a poistným</label>
+        <label for="splatkaILS">Splátka s DPH a poistným</label>
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">€</div>
@@ -148,25 +151,25 @@
     </div>
     
      <div class="form-group col-md-3">
-          <label for="nAkontacia">Akontácia v %</label>
-          <input type="number" min=0 class="form-control" id="Akontacia">
+          <label for="akontacia">Akontácia v %</label>
+          <input type="number" min=0 class="form-control" id="akontacia">
     </div>
 </div>
 
 <div class="form-row">
     <div class="form-group col-md-5">
-        <label for="nVyskaUveruILS">Výška úveru v ILS</label>
+        <label for="vyskaUveruILS">Výška úveru v ILS</label>
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">€</div>
                 </div>
-                <input type="number" min=0 placeholder=10000 class="form-control" id="VyskaUveruILS">
+                <input type="number" min=0 placeholder=10000 class="form-control" id="vyskaUveruILS">
             </div>
     </div>
    
     <div class="form-group col-md-4h" id="hideclass" style="visibility:hidden">
-        <label for="nSplatkaILS">Počet vychovaných detí</label>
-        <input type="number" min=0 class="form-control" id="splatkaILS">
+        <label for="pocetVychovanych">Počet vychovaných detí</label>
+        <input type="number" min=0 class="form-control" id="pocetVychovanych">
     </div>
 
 </div>  
@@ -187,57 +190,57 @@
           
             <div class="form-row">
                 <div class="form-group col-md-5-r">
-                  <label for="dUkoncenieZmluvy1">Dátum ukončenia</label>
+                  <label for="ukoncenieZmluvy1">Dátum ukončenia</label>
                   <input type="date" class="form-control" value="2030-07-15" id="ukoncenieZmluvy1">
                 </div>
                 
                 <div class="form-group col-md-4-r">
-                    <label for="dKoniecAktualnejFixacie1">Dátum konca aktuálnej fixácie</label>
+                    <label for="koniecAktualnejFixacie1">Dátum konca aktuálnej fixácie</label>
                     <input type="date" class="form-control" value="2022-07-15" id="koniecAktualnejFixacie1">
                 </div>
 
                 <div class="form-group col-md-3-r">
-                        <label for="nZostatokIstinyUrok1">Zostatok istiny + úrok</label>
+                        <label for="zostatokIstinyUrok1">Zostatok istiny + úrok</label>
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">€</div>
                                 </div>
-                                <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstinyUrok1">
+                                <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstinyUrok1">
                             </div>
                     </div>        
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-5">
-                    <label for="nUrokovaMiera1">Aktuálna úroková miera úveru v %</label>
-                    <input type="number" class="form-control" placeholder="2" id="UrokovaMiera1">
+                    <label for="urokovaMiera1">Aktuálna úroková miera úveru v %</label>
+                    <input type="number" class="form-control" placeholder="2" id="urokovaMiera1">
                 </div>
 
                 <div class="form-group col-md-4-r">
-                        <label for="nZostotokIstiny1">Čistý zostatok istiny</label>
+                        <label for="zostatokIstiny1">Čistý zostatok istiny</label>
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">€</div>
                                 </div>
-                                <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstiny1">
+                                <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstiny1">
                             </div>
                 </div>                
 
                 <div class="form-group col-md-3-r">
-                        <label for="nSplatkaUveru1">Spltáka úveru</label>
+                        <label for="splatkaUveru1">Spltáka úveru</label>
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">€</div>
                                 </div>
-                                <input type="number" min=0 class="form-control" placeholder=0 id="SplatkaUveru1">
+                                <input type="number" min=0 class="form-control" placeholder=0 id="splatkaUveru1">
                             </div>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-5">
-                    <label for="bZebezpecenyNehnutelnosto1">Úver zabezpečený nehnuteľnosťou</label>
-                    <select class="form-control" id="ZabezpecenyNehnutelnostou1">
+                    <label for="zabezpecenyNehnutelnostou1">Úver zabezpečený nehnuteľnosťou</label>
+                    <select class="form-control" id="zabezpecenyNehnutelnostou1">
                         <option>Nie</option>
                         <option>Áno</option>
                       </select>
@@ -262,42 +265,42 @@
             
               <div class="form-row">
                   <div class="form-group col-md-5-r">
-                    <label for="dUkoncenieZmluvy2">Dátum ukončenia</label>
+                    <label for="ukoncenieZmluvy2">Dátum ukončenia</label>
                     <input type="date" class="form-control" value="2030-07-15" id="ukoncenieZmluvy2">
                   </div>
                   
                   <div class="form-group col-md-4-r">
-                      <label for="dKoniecAktualnejFixacie2">Dátum konca aktuálnej fixácie</label>
+                      <label for="koniecAktualnejFixacie2">Dátum konca aktuálnej fixácie</label>
                       <input type="date" class="form-control" value="2022-07-15" id="koniecAktualnejFixacie2">
                   </div>
               
                    <div class="form-group col-md-3-r">
-                        <label for="nZostatokIstinyUrok2">Zostatok istiny + úrok</label>
-                        <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstinyUrok2">
+                        <label for="zostatokIstinyUrok2">Zostatok istiny + úrok</label>
+                        <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstinyUrok2">
                   </div>
               </div>
   
               <div class="form-row">
                   <div class="form-group col-md-5">
-                      <label for="nUrokovaMiera2">Aktuálna úroková miera úveru v %</label>
-                      <input type="number" class="form-control" placeholder="2" id="UrokovaMiera2">
+                      <label for="urokovaMiera2">Aktuálna úroková miera úveru v %</label>
+                      <input type="number" class="form-control" placeholder="2" id="urokovaMiera2">
                   </div>
                   
                   <div class="form-group col-md-4-r">
-                      <label for="nZostotokIstiny2">Čistý zostatok istiny </label>
-                      <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstiny2">
+                      <label for="zostatokIstiny2">Čistý zostatok istiny </label>
+                      <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstiny2">
                   </div>
               
                    <div class="form-group col-md-3-r">
-                        <label for="nSplatkaUveru2">Splátka úveru</label>
-                        <input type="number" min=0 class="form-control" placeholder=0 id="SplatkaUveru2">
+                        <label for="splatkaUveru2">Splátka úveru</label>
+                        <input type="number" min=0 class="form-control" placeholder=0 id="splatkaUveru2">
                   </div>
               </div>
   
               <div class="form-row">
                   <div class="form-group col-md-5">
-                      <label for="bZebezpecenyNehnutelnosto2">Úver zabezpečený nehnuteľnosťou</label>
-                      <select class="form-control" id="ZabezpecenyNehnutelnostou2">
+                      <label for="zabezpecenyNehnutelnostou2">Úver zabezpečený nehnuteľnosťou</label>
+                      <select class="form-control" id="zabezpecenyNehnutelnostou2">
                           <option>Nie</option>
                           <option>Áno</option>
                         </select>
@@ -320,42 +323,42 @@
               
                 <div class="form-row">
                     <div class="form-group col-md-5-r">
-                      <label for="dUkoncenieZmluvy3">Dátum ukončenia</label>
+                      <label for="ukoncenieZmluvy3">Dátum ukončenia</label>
                       <input type="date" class="form-control" value="2030-07-15" id="ukoncenieZmluvy3">
                     </div>
                     
                     <div class="form-group col-md-4-r">
-                        <label for="dKoniecAktualnejFixacie3">Dátum konca aktuálnej fixácie</label>
+                        <label for="koniecAktualnejFixacie3">Dátum konca aktuálnej fixácie</label>
                         <input type="date" class="form-control" value="2022-07-15" id="koniecAktualnejFixacie3">
                     </div>
                 
                      <div class="form-group col-md-3-r">
-                          <label for="nZostatokIstinyUrok3">Zostatok istiny + úrok</label>
-                          <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstinyUrok3">
+                          <label for="zostatokIstinyUrok3">Zostatok istiny + úrok</label>
+                          <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstinyUrok3">
                     </div>
                 </div>
     
                 <div class="form-row">
                     <div class="form-group col-md-5">
-                        <label for="nUrokovaMiera3">Aktuálna úroková miera úveru v %</label>
-                        <input type="number" class="form-control" placeholder="2" id="UrokovaMiera3">
+                        <label for="urokovaMiera3">Aktuálna úroková miera úveru v %</label>
+                        <input type="number" class="form-control" placeholder="2" id="urokovaMiera3">
                     </div>
                     
                     <div class="form-group col-md-4-r">
-                        <label for="nZostotokIstiny3">Čistý zostatok istiny </label>
-                        <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstiny3">
+                        <label for="zostatokIstiny3">Čistý zostatok istiny </label>
+                        <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstiny3">
                     </div>
                 
                      <div class="form-group col-md-3-r">
-                          <label for="nSplatkaUveru3">Splátka úveru</label>
-                          <input type="number" min=0 class="form-control" placeholder=0 id="SplatkaUveru3">
+                          <label for="splatkaUveru3">Splátka úveru</label>
+                          <input type="number" min=0 class="form-control" placeholder=0 id="splatkaUveru3">
                     </div>
                 </div>
     
                 <div class="form-row">
                     <div class="form-group col-md-5">
-                        <label for="bZebezpecenyNehnutelnosto3">Úver zabezpečený nehnuteľnosťou</label>
-                        <select class="form-control" id="ZabezpecenyNehnutelnostou3">
+                        <label for="zabezpecenyNehnutelnostou3">Úver zabezpečený nehnuteľnosťou</label>
+                        <select class="form-control" id="zabezpecenyNehnutelnostou3">
                             <option>Nie</option>
                             <option>Áno</option>
                           </select>
@@ -379,42 +382,42 @@
                 
                   <div class="form-row">
                       <div class="form-group col-md-5-r">
-                        <label for="dUkoncenieZmluvy4">Dátum ukončenia</label>
+                        <label for="ukoncenieZmluvy4">Dátum ukončenia</label>
                         <input type="date" class="form-control" value="2030-07-15" id="ukoncenieZmluvy4">
                       </div>
                       
                       <div class="form-group col-md-4-r">
-                          <label for="dKoniecAktualnejFixacie4">Dátum konca aktuálnej fixácie</label>
+                          <label for="koniecAktualnejFixacie4">Dátum konca aktuálnej fixácie</label>
                           <input type="date" class="form-control" value="2022-07-15" id="koniecAktualnejFixacie4">
                       </div>
                   
                        <div class="form-group col-md-3-r">
-                            <label for="nZostatokIstinyUrok4">Zostatok istiny + úrok</label>
-                            <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstinyUrok4">
+                            <label for="zostatokIstinyUrok4">Zostatok istiny + úrok</label>
+                            <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstinyUrok4">
                       </div>
                   </div>
       
                   <div class="form-row">
                       <div class="form-group col-md-5">
-                          <label for="nUrokovaMiera4">Aktuálna úroková miera úveru v %</label>
-                          <input type="number" class="form-control" placeholder="2" id="UrokovaMiera4">
+                          <label for="urokovaMiera4">Aktuálna úroková miera úveru v %</label>
+                          <input type="number" class="form-control" placeholder="2" id="urokovaMiera4">
                       </div>
                       
                       <div class="form-group col-md-4-r">
-                          <label for="nZostotokIstiny4">Čistý zostatok istiny </label>
-                          <input type="number" min=0 class="form-control" placeholder=0 id="ZostatokIstiny4">
+                          <label for="zostatokIstiny4">Čistý zostatok istiny </label>
+                          <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstiny4">
                       </div>
                   
                        <div class="form-group col-md-3-r">
-                            <label for="nSplatkaUveru4">Splátka úveru</label>
-                            <input type="number" min=0 class="form-control" placeholder=0 id="SplatkaUveru4">
+                            <label for="splatkaUveru4">Splátka úveru</label>
+                            <input type="number" min=0 class="form-control" placeholder=0 id="splatkaUveru4">
                       </div>
                   </div>
       
                   <div class="form-row">
                       <div class="form-group col-md-5">
-                          <label for="bZebezpecenyNehnutelnosto4">Úver zabezpečený nehnuteľnosťou</label>
-                          <select class="form-control" id="ZabezpecenyNehnutelnostou4">
+                          <label for="zabezpecenyNehnutelnostou4">Úver zabezpečený nehnuteľnosťou</label>
+                          <select class="form-control" id="zabezpecenyNehnutelnostou4">
                               <option>Nie</option>
                               <option>Áno</option>
                             </select>

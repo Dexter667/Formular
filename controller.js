@@ -33,24 +33,53 @@ var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia')
 
 // alert(result2-dateDatumNarodenia);
 
-window = onbeforeunload = chekRentirementlDate();
 
-function chekRentirementlDate(){
+
+// window = onbeforeunload = chekRentirementlDate();
+
+function checkRentirementDate(){
     var myDate = new Date();
     var result1 = myDate.addMonths(-744);
     var dateRetirementLimit = result1.addDays(-139);
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
-    var datePolovicaLeasingu = new Date(myDate.addMonths(document.getElementById()))
-    var bDochodkovyVek
     if(dateDatumNarodenia < dateRetirementLimit){
         bDochodkovyVek = true;
-        // alert(bDochodkovyVek);
+        var arr =  document.getElementsByClassName("media-body info");
+        if (document.getElementById('pohlavie').value == "Muž"){
+            arr[0].innerHTML = "Žiadateľ zavŕšil dôchodkový vek. Postupujte v zmysle Rizikosmernice \
+            Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
+        }
+        else {
+            arr[0].innerHTML = "Žiadateľka zavŕšila dôchodkový vek. Postupujte v zmysle Rizikosmernice \
+            Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
+        }
     }
     else {
         bDochodkovyVek = false
-        // alert(bDochodkovyVek);
+        // alert(bDochodkovyVek); check či nie je viac ako polovica
     }
+}
 
+function checkLeasingToRentirementDate(){
+    var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
+    var result1 = dateDatumNarodenia.addMonths(744);
+    var dateRetirementDate = result1.addDays(139); //dopracovať funkciu na výpočet dôchodkového veku žien narodených pred 01.01.1962 (array)
+    var dateLeasingRuntimeHalf = new Date(myDate.addMonths((document.getElementById('dlzkaFinancovania'.value)/2)+1))
+
+    if(dateLeasingRuntimeHalf > dateRetirementDate){
+        var arr =  document.getElementsByClassName("media-body info");
+        if (document.getElementById('pohlavie').value == "Muž"){
+            arr[0].innerHTML = "Žiadateľ zavŕši dôchodkový vek skôr, ako skončí polovica doby financovania \
+            Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
+        }
+        else {
+            arr[0].innerHTML = "Žiadateľka zavŕši dôchodkový vek skôr, ako skončí polovica doby financovania \
+            Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
+        }
+    }
+    else {
+        // alert(bDochodkovyVek); check či nie je viac ako polovica
+    }
 }
 
 /*Kontrola dôchodkového veku u žien narodených pred 01.01.1962*/
@@ -58,9 +87,8 @@ var hideField = document.getElementsByClassName('form-group col-md-4h'), i;
 var refDochodokZeny = new Date('1962-01-01');
 
 function checkGender(){
-    var DatumNarodenia = document.getElementById("inputDatumNarodenia");
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
-    var chkPohlavie = ((document.getElementById('Pohlavie').value) == "Muž") ? false: true;
+    var chkPohlavie = ((document.getElementById('pohlavie').value) == "Muž") ? false: true;
     if ((dateDatumNarodenia < refDochodokZeny) && (chkPohlavie == true)){
         document.getElementById("hideclass").style.visibility = "visible";
         }
@@ -70,5 +98,6 @@ function checkGender(){
 }
 
 document.getElementById("inputDatumNarodenia").addEventListener("change", checkGender);
-document.getElementById("inputDatumNarodenia").addEventListener("change", chekRentirementlDate);
-document.getElementById("Pohlavie").addEventListener("change", checkGender);
+document.getElementById("inputDatumNarodenia").addEventListener("change", checkRentirementDate);
+document.getElementById("dlzkaFinancovania").addEventListener("change", checkLeasingToRentirementDate);
+document.getElementById("pohlavie").addEventListener("change", checkGender);
