@@ -42,46 +42,72 @@ function checkRentirementDate(){
     var result1 = myDate.addMonths(-744);
     var dateRetirementLimit = result1.addDays(-139);
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
+    var arr =  document.getElementsByClassName("media-body info");
     if(dateDatumNarodenia < dateRetirementLimit){
         bDochodkovyVek = true;
-        var arr =  document.getElementsByClassName("media-body info");
         if (document.getElementById('pohlavie').value == "Muž"){
             arr[0].innerHTML = "Žiadateľ zavŕšil dôchodkový vek. Postupujte v zmysle Rizikosmernice \
             Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
+            arr[0].style.fontWeight = "bold"; 
         }
         else {
             arr[0].innerHTML = "Žiadateľka zavŕšila dôchodkový vek. Postupujte v zmysle Rizikosmernice \
             Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
+            arr[0].style.fontWeight = "bold"; 
         }
     }
     else {
-        bDochodkovyVek = false
-        // alert(bDochodkovyVek); check či nie je viac ako polovica
+        arr[0].innerHTML = "";
     }
 }
 
 function checkLeasingToRentirementDate(){
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
-    var result1 = dateDatumNarodenia.addMonths(744);
-    var dateRetirementDate = result1.addDays(139); //dopracovať funkciu na výpočet dôchodkového veku žien narodených pred 01.01.1962 (array)
-    var dateLeasingRuntimeHalf = new Date(myDate.addMonths((document.getElementById('dlzkaFinancovania'.value)/2)+1))
-
-    if(dateLeasingRuntimeHalf > dateRetirementDate){
-        var arr =  document.getElementsByClassName("media-body info");
-        if (document.getElementById('pohlavie').value == "Muž"){
-            arr[0].innerHTML = "Žiadateľ zavŕši dôchodkový vek skôr, ako skončí polovica doby financovania \
-            Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
-        }
-        else {
-            arr[0].innerHTML = "Žiadateľka zavŕši dôchodkový vek skôr, ako skončí polovica doby financovania \
-            Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
-        }
+    var arrRetirementWomen56To61 = [[744,744,732,711,711,690],[744,744,741,720,720,699],[744,744,744,729,729,708],[744,744,744,738,738,717],[744,744,744,744,744,726],[744,744,744,744,744,735]];
+    var iYearIndexW;
+    var iYearOfBirth = dateDatumNarodenia.getFullYear();
+    switch (iYearOfBirth) {
+    case 1956:
+        iYearIndexW = 0;
+        break;
+    case 1957:
+        iYearIndexW = 1;
+        break;
+    case 1958:
+        iYearIndexW = 2;
+        break;
+    case 1959:
+        iYearIndexW = 3;
+        break;
+    case 1960:
+        iYearIndexW = 4;
+        break;
+    case 1961:
+        iYearIndexW = 5;
+        break;
+    default:
+        iYearIndexW = 5;
+        break;
     }
-    else {
-        // alert(bDochodkovyVek); check či nie je viac ako polovica
+    var iNumberOfChildrenRaised = document.getElementById('pocetVychovanych').value;   
+    var myDate = new Date();
+    var iPocetMesiacov = (document.getElementById('dlzkaFinancovania').value/2)+1
+    var dateLeasingRuntimeHalf = new Date(myDate.addMonths(iPocetMesiacov));
+    var dateRetirementDate = dateDatumNarodenia.addMonths(arrRetirementWomen56To61[iYearIndexW][iNumberOfChildrenRaised]);
+    var arr = document.getElementsByClassName("media-body info");
+
+    if((iYearOfBirth < 1956) || (dateRetirementDate < myDate)){
+        arr[0].innerHTML = "Žiadateľka zavŕšila dôchodkový vek. Postupujte v zmysle Rizikosmernice \
+        Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
+        arr[0].style.fontWeight = "bold";
+    }
+    else
+    if(dateLeasingRuntimeHalf > dateRetirementDate){
+        arr[0].innerHTML = "Žiadateľka zavŕši dôchodkový vek skôr ako uplynie polovica doby financovania. \
+        Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
+        arr[0].style.fontWeight = "bold";
     }
 }
-
 /*Kontrola dôchodkového veku u žien narodených pred 01.01.1962*/
 var hideField = document.getElementsByClassName('form-group col-md-4h'), i;
 var refDochodokZeny = new Date('1962-01-01');
@@ -90,14 +116,24 @@ function checkGender(){
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
     var chkPohlavie = ((document.getElementById('pohlavie').value) == "Muž") ? false: true;
     if ((dateDatumNarodenia < refDochodokZeny) && (chkPohlavie == true)){
-        document.getElementById("hideclass").style.visibility = "visible";
+        document.getElementById("cPocetVychovanych").style.visibility = "visible";
         }
     else {
-        document.getElementById("hideclass").style.visibility = "hidden";
+        document.getElementById("cPocetVychovanych").style.visibility = "hidden";
     }
 }
 
-document.getElementById("inputDatumNarodenia").addEventListener("change", checkGender);
-document.getElementById("inputDatumNarodenia").addEventListener("change", checkRentirementDate);
-document.getElementById("dlzkaFinancovania").addEventListener("change", checkLeasingToRentirementDate);
+document.getElementById("inputDatumNarodenia").addEventListener("blur", checkGender);
+document.getElementById("inputDatumNarodenia").addEventListener("blur", checkRentirementDate);
+document.getElementById("inputDatumNarodenia").addEventListener("blur", checkLeasingToRentirementDate);
+
 document.getElementById("pohlavie").addEventListener("change", checkGender);
+document.getElementById("pohlavie").addEventListener("change", checkRentirementDate);
+document.getElementById("pohlavie").addEventListener("change", checkLeasingToRentirementDate);
+
+document.getElementById("dlzkaFinancovania").addEventListener("change", checkRentirementDate);
+document.getElementById("dlzkaFinancovania").addEventListener("change", checkLeasingToRentirementDate);
+
+document.getElementById("pocetVychovanych").addEventListener("change", checkRentirementDate);
+document.getElementById("pocetVychovanych").addEventListener("change", checkLeasingToRentirementDate);
+
