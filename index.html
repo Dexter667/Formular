@@ -3,6 +3,7 @@
  <head>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <script src="autonumeric.js"></script>
  
  <link rel="stylesheet" href="bootstrap.css">
  <link rel="kontajner" href="kontajner.css">
@@ -10,7 +11,7 @@
  <body>
  
 <div class="media">
-    <img class="ml-0" src="ILS_logo.jpg" alt="Generic placeholder image" width="327" height="96">
+    <img class="ml-0 rounded-left" src="ILS_logo.jpg" alt="Generic placeholder image" width="327" height="96">
         <div class="media-body">
                 <table class="table table-sm">
                         <tbody>
@@ -45,7 +46,7 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
 <form>
   <div class="form-row">
     <div class="form-group col-md-5">
-      <label for="inputMenoZiadatela" id="test1">Žiadateľ</label>
+      <label for="inputMenoZiadatela">Žiadateľ</label>
       <input type="text" class="form-control" id="inputMenoZiadatela" placeholder="Ferko Mrkvička">
     </div>
 
@@ -59,7 +60,7 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
 
     <div class="form-group col-md-3">
         <label for="inputDatumNarodenia">Dátum narodenia</label>
-        <input type="date" class="form-control" id="inputDatumNarodenia" value="1956-04-26">
+        <input type="date" class="form-control" id="inputDatumNarodenia" value="1976-04-26">
     </div>
 </div>
 
@@ -103,11 +104,11 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
 <div class="form-row">
     <div class="form-group col-md-5">
         <label for="cistyPrijemziadatela">Čistý mesačný príjem žiadateľa</label>
-            <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group mb-2 mr-sm-2_1">
                 <div class="input-group-prepend">
                     <div class="input-group-text">€</div>
                 </div>
-                <input type="number" min=0 placeholder=1234,56 class="form-control" id="cistyPrijemziadatela" >
+                <input type="text" class="form-control" id="cistyPrijemziadatela"> <!--min=0 placeholder=1234,56-->
             </div>
     </div>
 
@@ -115,11 +116,11 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
         <div class="specialAlign1">
             <label for="prijemSpoludlznika">Čistý mesačný príjem spoludlžníka</label>
         </div>
-            <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group mb-2 mr-sm-2_2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">€</div>
                 </div>
-                <input type="number" min=0 placeholder=789,01 class="form-control" id="prijemSpoludlznika">
+                <input type="text" class="form-control" id="prijemSpoludlznika"> <!--min=0 placeholder=789,01-->
             </div>
     </div>
 
@@ -141,30 +142,35 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
 
     <div class="form-group col-md-4">
         <label for="splatkaILS">Splátka s DPH a poistným</label>
-            <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group mb-2 mr-sm-2_5">
                 <div class="input-group-prepend">
                     <div class="input-group-text">€</div>
                 </div>
-                <input type="number" placeholder=300,89 min=0 class="form-control" id="splatkaILS" >
+                <input type="text" class="form-control" id="splatkaILS" >
             </div>
     </div>
     
      <div class="form-group col-md-3">
-          <label for="akontacia">Akontácia v %</label>
-          <input type="number" min=0 class="form-control" id="akontacia">
+          <label for="akontacia">Akontácia</label>
+          <div class="input-group mb-2 mr-sm-2_4">
+            <div class="input-group-prepend">
+                <div class="input-group-text">%</div>
+            </div>
+            <input type="text" class="form-control" id="akontacia">
+        </div>
     </div>
 </div>
 
 <div class="form-row">
     <div class="form-group col-md-5">
         <label for="vyskaUveruILS">Výška úveru v ILS</label>
-            <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group mb-2 mr-sm-2_3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">€</div>
                 </div>
-                <input type="number" min=0 placeholder=10000 class="form-control" id="vyskaUveruILS">
+                <input type="text" class="form-control" id="vyskaUveruILS">
             </div>
-    </div>
+    </div>  
    
     <div class="form-group col-md-4h" id="cPocetVychovanych" style="visibility:hidden">
         <label for="pocetVychovanych">Počet vychovaných detí</label>
@@ -172,6 +178,9 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
     </div>
 
 </div>  
+
+<!-- <input type="text" min=0 value=0 class="form-control" id="test1"> -->
+
 <p></p>
 
   <div class="accordion" id="accordion">
@@ -428,6 +437,7 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
   </div>
     <script src="controller.js"></script>          
     <script src="jquery-3.3.1.js"></script>
+    <!-- <script src="autoNumeric.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  </body>

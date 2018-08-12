@@ -1,7 +1,44 @@
+anElement1 = new AutoNumeric('.mr-sm-2_1 > input', 1123.35, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement2 = new AutoNumeric('.mr-sm-2_2 > input', 0, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement3 = new AutoNumeric('.mr-sm-2_3 > input', 10507.82, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+
+anElement4 = new AutoNumeric('.mr-sm-2_4 > input', 33.33, {
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    emptyInputBehavior: "max",
+    maximumValue: "99",
+    minimumValue: "0"
+});
+
+anElement3 = new AutoNumeric('.mr-sm-2_5 > input', 504.29, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
 Date.isLeapYear = function (year) { 
     return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)); 
 };
-Date.getDaysInMonth = function (year, month) {
+Date.getDaysInMonth = function (year, month) {  
     return [31, (Date.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
 };
 Date.prototype.isLeapYear = function () { 
@@ -21,19 +58,6 @@ Date.prototype.addDays = function (value) {
     this.setDate(this.getDate() + value * 1);
     return this;
 };
-
-
-/* var myDate = new Date();
-var result1 = myDate.addMonths(-744);
-var dateRetirementLimit = result1.addDays(-139);
-var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value); */
-
-// alert(dateRetirementLimit.toLocaleDateString());
-// alert(dateDatumNarodenia.toLocaleDateString());
-
-// alert(result2-dateDatumNarodenia);
-
-
 
 // window = onbeforeunload = chekRentirementlDate();
 
@@ -60,7 +84,7 @@ function checkRentirementDate(){
         arr[0].innerHTML = "";
     }
 }
-
+//
 function checkLeasingToRentirementDate(){
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
     var arrRetirementWomen56To61 = [[744,744,732,711,711,690],[744,744,741,720,720,699],[744,744,744,729,729,708],[744,744,744,738,738,717],[744,744,744,744,744,726],[744,744,744,744,744,735]];
@@ -108,7 +132,7 @@ function checkLeasingToRentirementDate(){
         arr[0].style.fontWeight = "bold";
     }
 }
-/*Kontrola dôchodkového veku u žien narodených pred 01.01.1962*/
+//Kontrola dôchodkového veku u žien narodených pred 01.01.1962
 var hideField = document.getElementsByClassName('form-group col-md-4h'), i;
 var refDochodokZeny = new Date('1962-01-01');
 

@@ -2964,7 +2964,7 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 700;
-  color: #007bff;
+  color: rgb(0, 0, 0); /*#007bff*/
   background-color: transparent;
 }
 
@@ -7848,6 +7848,26 @@ button.bg-dark:focus {
   }
   .mr-sm-2,
   .mx-sm-2 {
+    margin-right: 0.5rem !important;
+  }
+  .mr-sm-2_1,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
+  {
+    margin-right: 0.5rem !important;
+  }
+  .mr-sm-2_2,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
+  {
+    margin-right: 0.5rem !important;
+  }
+  .mr-sm-2_3,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
+  {
+    margin-right: 0.5rem !important;
+  }
+  .mr-sm-2_4,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
+  {
+    margin-right: 0.5rem !important;
+  }
+  .mr-sm-2_5,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
+  {
     margin-right: 0.5rem !important;
   }
   .mb-sm-2,
