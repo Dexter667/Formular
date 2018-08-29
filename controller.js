@@ -67,8 +67,11 @@ function checkRentirementDate(){
     var dateRetirementLimit = result1.addDays(-139);
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
     var arr =  document.getElementsByClassName("media-body info");
+    // alert(dateDatumNarodenia);
+    // alert(dateRetirementLimit);
     if(dateDatumNarodenia < dateRetirementLimit){
         bDochodkovyVek = true;
+        // alert("pohlavie");
         if (document.getElementById('pohlavie').value == "Muž"){
             arr[0].innerHTML = "Žiadateľ zavŕšil dôchodkový vek. Postupujte v zmysle Rizikosmernice \
             Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
@@ -116,20 +119,38 @@ function checkLeasingToRentirementDate(){
     var iNumberOfChildrenRaised = document.getElementById('pocetVychovanych').value;   
     var myDate = new Date();
     var iPocetMesiacov = (document.getElementById('dlzkaFinancovania').value/2)+1
-    var dateLeasingRuntimeHalf = new Date(myDate.addMonths(iPocetMesiacov));
+    var dateLeasingRuntimeHalf = new Date().addMonths(iPocetMesiacov);
     var dateRetirementDate = dateDatumNarodenia.addMonths(arrRetirementWomen56To61[iYearIndexW][iNumberOfChildrenRaised]);
     var arr = document.getElementsByClassName("media-body info");
-
-    if((iYearOfBirth < 1956) || (dateRetirementDate < myDate)){
-        arr[0].innerHTML = "Žiadateľka zavŕšila dôchodkový vek. Postupujte v zmysle Rizikosmernice \
-        Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
-        arr[0].style.fontWeight = "bold";
+    var chkPohlavie = ((document.getElementById('pohlavie').value) == "Muž") ? false: true;
+    alert(dateLeasingRuntimeHalf);
+    alert(dateRetirementDate);
+    alert(chkPohlavie);
+    if(chkPohlavie = false){
+        if((iYearOfBirth < 1956) || (dateRetirementDate < myDate)){
+            arr[0].innerHTML = "Žiadateľka zavŕšila dôchodkový vek. Postupujte v zmysle Rizikosmernice \
+            Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
+            arr[0].style.fontWeight = "bold";
+        }
+        else
+        if(dateLeasingRuntimeHalf > dateRetirementDate){
+            arr[0].innerHTML = "Žiadateľka zavŕši dôchodkový vek skôr ako uplynie polovica doby financovania. \
+            Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
+            arr[0].style.fontWeight = "bold";
+        }
     }
-    else
-    if(dateLeasingRuntimeHalf > dateRetirementDate){
-        arr[0].innerHTML = "Žiadateľka zavŕši dôchodkový vek skôr ako uplynie polovica doby financovania. \
-        Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
-        arr[0].style.fontWeight = "bold";
+    else{
+        if((iYearOfBirth < 1956) || (dateRetirementDate < myDate)){
+            arr[0].innerHTML = "Žiadateľ zavŕšil dôchodkový vek. Postupujte v zmysle Rizikosmernice \
+            Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
+            arr[0].style.fontWeight = "bold";
+        }
+        else
+        if(dateLeasingRuntimeHalf > dateRetirementDate){
+            arr[0].innerHTML = "Žiadateľ zavŕši dôchodkový vek skôr ako uplynie polovica doby financovania. \
+            Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovaným dôchodkom.";
+            arr[0].style.fontWeight = "bold";
+        }
     }
 }
 //Kontrola dôchodkového veku u žien narodených pred 01.01.1962
