@@ -7870,6 +7870,22 @@ button.bg-dark:focus {
   {
     margin-right: 0.5rem !important;
   }
+  .mr-sm-mr-sm-2_collapseOne1,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
+  {
+    margin-right: 0.5rem !important;
+  }
+  .mr-sm-mr-sm-2_collapseOne2,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
+  {
+    margin-right: 0.5rem !important;
+  }
+  .mr-sm-mr-sm-2_collapseOne3,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
+  {
+    margin-right: 0.5rem !important;
+  }
+  .mr-sm-mr-sm-2_collapseOne4,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
+  {
+    margin-right: 0.5rem !important;
+  }
   .mb-sm-2,
   .my-sm-2 {
     margin-bottom: 0.5rem !important;

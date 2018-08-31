@@ -19,22 +19,51 @@ anElement3 = new AutoNumeric('.mr-sm-2_3 > input', 10507.82, {
     minimumValue: "0"
 });
 
-
 anElement4 = new AutoNumeric('.mr-sm-2_4 > input', 33.33, {
     decimalCharacter: ",",
     digitGroupSeparator: " ",
     emptyInputBehavior: "max",
-    maximumValue: "99",
+    maximumValue: "99.99",
     minimumValue: "0"
 });
 
-anElement3 = new AutoNumeric('.mr-sm-2_5 > input', 504.29, {
+anElement5 = new AutoNumeric('.mr-sm-2_5 > input', 504.29, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
     minimumValue: "0"
 });
 
+anElement6 = new AutoNumeric('.mr-sm-2_collapseOne1 > input', 78654.32, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement7 = new AutoNumeric('.mr-sm-2_collapseOne2 > input', 2.15, {
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    emptyInputBehavior: "max",
+    maximumValue: "99.99",
+    minimumValue: "0"
+});
+
+anElement8 = new AutoNumeric('.mr-sm-2_collapseOne3 > input', 63500, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement8 = new AutoNumeric('.mr-sm-2_collapseOne4 > input', 253.21, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+//EDATE Functions
 Date.isLeapYear = function (year) { 
     return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)); 
 };
@@ -59,7 +88,46 @@ Date.prototype.addDays = function (value) {
     return this;
 };
 
-// window = onbeforeunload = chekRentirementlDate();
+//DATEDIFF Functions
+var DateDiff = {
+ 
+    inDays: function(d1, d2) {
+        var t2 = d2.getTime();
+        var t1 = d1.getTime();
+ 
+        return parseInt((t2-t1)/(24*3600*1000));
+    },
+ 
+    inWeeks: function(d1, d2) {
+        var t2 = d2.getTime();
+        var t1 = d1.getTime();
+ 
+        return parseInt((t2-t1)/(24*3600*1000*7));
+    },
+ 
+    inMonths: function(d1, d2) {
+        var d1Y = d1.getFullYear();
+        var d2Y = d2.getFullYear();
+        var d1M = d1.getMonth();
+        var d2M = d2.getMonth();
+ 
+        return (d2M+12*d2Y)-(d1M+12*d1Y);
+    },
+ 
+    inYears: function(d1, d2) {
+        return d2.getFullYear()-d1.getFullYear();
+    }
+}
+ 
+// var dString = "May, 20, 1984";
+ 
+// var d1 = new Date(dString);
+// var d2 = new Date();
+ 
+// document.write("<br />Number of <b>days</b> since "+dString+": "+DateDiff.inDays(d1, d2));
+// document.write("<br />Number of <b>weeks</b> since "+dString+": "+DateDiff.inWeeks(d1, d2));
+// document.write("<br />Number of <b>months</b> since "+dString+": "+DateDiff.inMonths(d1, d2));
+// document.write("<br />Number of <b>years</b> since "+dString+": "+DateDiff.inYears(d1, d2));
 
 function checkRentirementDate(){
     var myDate = new Date();
@@ -123,9 +191,9 @@ function checkLeasingToRentirementDate(){
     var dateRetirementDate = dateDatumNarodenia.addMonths(arrRetirementWomen56To61[iYearIndexW][iNumberOfChildrenRaised]);
     var arr = document.getElementsByClassName("media-body info");
     var chkPohlavie = ((document.getElementById('pohlavie').value) == "Muž") ? false: true;
-    alert(dateLeasingRuntimeHalf);
-    alert(dateRetirementDate);
-    alert(chkPohlavie);
+    // alert(dateLeasingRuntimeHalf);
+    // alert(dateRetirementDate);
+    // alert(chkPohlavie);
     if(chkPohlavie = false){
         if((iYearOfBirth < 1956) || (dateRetirementDate < myDate)){
             arr[0].innerHTML = "Žiadateľka zavŕšila dôchodkový vek. Postupujte v zmysle Rizikosmernice \
@@ -168,6 +236,52 @@ function checkGender(){
     }
 }
 
+////Výpočet stresovanej splátky
+
+$(function stressTest1Var1 (){
+    var StressPayment1 = 0;
+    var buffPayment1 = document.getElementById("splatkaUveru1").value;
+    var d1 = new Date();
+    var d2 = new Date(document.getElementById("ukoncenieZmluvy1").value);
+    var d3 = new Date(document.getElementById("koniecAktualnejFixacie1").value); 
+    var iZostavajucaDlzkaUveru1 = DateDiff.inMonths(d1, d2);
+    var iZostavajucaDlzkaFixacie1 = DateDiff.inMonths(d1, d3);
+    var mult1 = 1 + (iZostavajucaDlzkaUveru1/12/100);
+    var mult2 = (iZostavajucaDlzkaFixacie1 >= 120) ? 0.5: 1;
+
+    if(iZostavajucaDlzkaUveru1 <=96){
+        StressPayment1 = buffPayment1;
+    }
+    else{    
+        StressPayment1 = (parseFloat(buffPayment1.replace(",","."))*mult1*mult2).toPrecision(5);
+    }
+    // alert(StressPayment1);    
+})
+
+function PMT(rate, nper, pv, fv, type) {
+    if (!fv) fv = 0;
+    if (!type) type = 0;
+
+    if (rate == 0) return -(pv + fv)/nper;
+    
+    var pvif = Math.pow(1 + rate, nper);
+    var pmt = rate / (pvif - 1) * -(pv * pvif + fv);
+
+    if (type == 1) {
+        pmt /= (1 + rate);
+    };
+    return pmt;
+}
+
+result = PMT(0.07/12,36,-10000,0,1);
+alert(result);
+
+// $(function VisibilityUver1(){
+//     var isVisible = $('#collapseOne').is(":visible");
+//     alert(isVisible);
+// })
+
+
 document.getElementById("inputDatumNarodenia").addEventListener("blur", checkGender);
 document.getElementById("inputDatumNarodenia").addEventListener("blur", checkRentirementDate);
 document.getElementById("inputDatumNarodenia").addEventListener("blur", checkLeasingToRentirementDate);
@@ -182,3 +296,4 @@ document.getElementById("dlzkaFinancovania").addEventListener("change", checkLea
 document.getElementById("pocetVychovanych").addEventListener("change", checkRentirementDate);
 document.getElementById("pocetVychovanych").addEventListener("change", checkLeasingToRentirementDate);
 
+document.getElementById("kolapse1").addEventListener("click",checkVisibilityUver1);
