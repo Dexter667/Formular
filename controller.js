@@ -244,9 +244,9 @@ function checkGender(){
 
 ////Výpočet stresovanej splátky 1 Variant 1 - navýšenie splátky percentom v počte zostávajúcich rokov
 
-$(function stressTest1Var1 (){  
+function stressTest1Var1 (){  
     var stressPayment1Var1 = 0;
-    var buffPayment1 = document.getElementById("splatkaUveru1").value;
+    var buffPayment1 = ((document.getElementById("splatkaUveru1").value).replace(/ /g, '')).replace(/,/, '.');
     var d1 = new Date();
     var d2 = new Date(document.getElementById("ukoncenieZmluvy1").value);
     var d3 = new Date(document.getElementById("koniecAktualnejFixacie1").value); 
@@ -259,13 +259,13 @@ $(function stressTest1Var1 (){
         stressPayment1Var1 = buffPayment1;
     }
     else{    
-        stressPayment1Var1 = (parseFloat(buffPayment1.replace(",","."))*mult1*mult2).toPrecision(5);
+        stressPayment1Var1 = parseFloat(buffPayment1*mult1*mult2).toPrecision(5);
     }
-    // alert(stressPayment1Var1);    
-})
+    alert(stressPayment1Var1);    
+}
 
 ////Výpočet stresovanej splátky 1 Variant 2 - navýšenie úrokovej sadzby
-$(function stressTest1Var2 (){
+function stressTest1Var2 (){
     var stressPayment1Var2 = 0;
     var buffPayment1 = document.getElementById("splatkaUveru1").value;
     var d1 = new Date();
@@ -274,20 +274,10 @@ $(function stressTest1Var2 (){
     var iZostavajucaDlzkaUveru1 = DateDiff.inMonths(d1, d2);
     var iZostavajucaDlzkaFixacie1 = DateDiff.inMonths(d1, d3);
 
-    var lurAdd = (iZostavajucaDlzkaFixacie1 >= 120) ? 1: 0;
+    var lurAdd = (iZostavajucaDlzkaFixacie1 >= 120) ? 0.01: 0.02;
     var zabezpNehnutelnostou = (document.getElementById("zabezpecenyNehnutelnostou1").value == "Nie") ? false: true;
-    var lur = document.getElementById("urokovaMiera1").value;
-    var zostatokIstiny1 = document.getElementById("zostatokIstiny1").value;
-
-
-    // alert(parseFloat(lur.replace(",",".")));
-    zostatokIstiny1 = (zostatokIstiny1.replace(/ /g, '')).replace(",",".");
-
-    alert(zostatokIstiny1);
-
-
-    var lurzaklad = parseFloat((lur.replace(/ /g, '')).replace(",",".")) + parseFloat(lurAdd);
-    alert(lurzaklad);
+    var lur = parseFloat((document.getElementById("urokovaMiera1").value).replace(",","."))/100;
+    var zostatokIstiny1 = parseFloat(((document.getElementById("zostatokIstiny1").value).replace(/ /g, '')).replace(/,/, "."));
 
     if(iZostavajucaDlzkaUveru1 <=96){
         stressPayment1Var2 = buffPayment1;
@@ -299,20 +289,24 @@ $(function stressTest1Var2 (){
         }
         else 
         {
-            stressPayment1Var2 = PMT(lurzaklad/12/100,360,-zostatokIstiny1,0,0); 
+            stressPayment1Var2 = PMT((lur + lurAdd)/12,360,-zostatokIstiny1,0,0); 
         }
     }
-    alert(stressPayment1Var2);
-    // alert(PMT(0.0215/12,360,parsefloat(-zostatokIstiny1),0,0));    
+    alert(stressPayment1Var2);  
+}
+
+$(function VisibilityUver1(){
+    var isVisible = $('#collapseOne').is(":visible");
+    if (isVisible == true){
+        stressPayment1Var1();
+        stressPayment1Var2();
+    }
+    // alert(isVisible);
 })
 
-
-// result = PMT(0.07/12,36,-10000,0,1);
-// alert(result);
-
-// $(function VisibilityUver1(){
-//     var isVisible = $('#collapseOne').is(":visible");
-//     alert(isVisible);
+// $(
+//     if(VisibilityUver1 == true){
+//     alert("collapse One je vidietelny";)
 // })
 
 
