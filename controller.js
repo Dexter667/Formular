@@ -49,7 +49,7 @@ anElement7 = new AutoNumeric('.mr-sm-2_collapseOne2 > input', 2.15, {
     minimumValue: "0"
 });
 
-anElement8 = new AutoNumeric('.mr-sm-2_collapseOne3 > input', 63500, {
+anElement8 = new AutoNumeric('.mr-sm-2_collapseOne3 > input', 63500.49, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
@@ -118,16 +118,22 @@ var DateDiff = {
         return d2.getFullYear()-d1.getFullYear();
     }
 }
- 
-// var dString = "May, 20, 1984";
- 
-// var d1 = new Date(dString);
-// var d2 = new Date();
- 
-// document.write("<br />Number of <b>days</b> since "+dString+": "+DateDiff.inDays(d1, d2));
-// document.write("<br />Number of <b>weeks</b> since "+dString+": "+DateDiff.inWeeks(d1, d2));
-// document.write("<br />Number of <b>months</b> since "+dString+": "+DateDiff.inMonths(d1, d2));
-// document.write("<br />Number of <b>years</b> since "+dString+": "+DateDiff.inYears(d1, d2));
+
+//PMT
+function PMT(rate, nper, pv, fv, type) {
+    if (!fv) fv = 0;
+    if (!type) type = 0;
+
+    if (rate == 0) return -(pv + fv)/nper;
+    
+    var pvif = Math.pow(1 + rate, nper);
+    var pmt = rate / (pvif - 1) * -(pv * pvif + fv);
+
+    if (type == 1) {
+        pmt /= (1 + rate);
+    };
+    return pmt;
+}
 
 function checkRentirementDate(){
     var myDate = new Date();
@@ -236,10 +242,10 @@ function checkGender(){
     }
 }
 
-////Výpočet stresovanej splátky
+////Výpočet stresovanej splátky 1 Variant 1 - navýšenie splátky percentom v počte zostávajúcich rokov
 
-$(function stressTest1Var1 (){
-    var StressPayment1 = 0;
+$(function stressTest1Var1 (){  
+    var stressPayment1Var1 = 0;
     var buffPayment1 = document.getElementById("splatkaUveru1").value;
     var d1 = new Date();
     var d2 = new Date(document.getElementById("ukoncenieZmluvy1").value);
@@ -250,31 +256,59 @@ $(function stressTest1Var1 (){
     var mult2 = (iZostavajucaDlzkaFixacie1 >= 120) ? 0.5: 1;
 
     if(iZostavajucaDlzkaUveru1 <=96){
-        StressPayment1 = buffPayment1;
+        stressPayment1Var1 = buffPayment1;
     }
     else{    
-        StressPayment1 = (parseFloat(buffPayment1.replace(",","."))*mult1*mult2).toPrecision(5);
+        stressPayment1Var1 = (parseFloat(buffPayment1.replace(",","."))*mult1*mult2).toPrecision(5);
     }
-    // alert(StressPayment1);    
+    // alert(stressPayment1Var1);    
 })
 
-function PMT(rate, nper, pv, fv, type) {
-    if (!fv) fv = 0;
-    if (!type) type = 0;
+////Výpočet stresovanej splátky 1 Variant 2 - navýšenie úrokovej sadzby
+$(function stressTest1Var2 (){
+    var stressPayment1Var2 = 0;
+    var buffPayment1 = document.getElementById("splatkaUveru1").value;
+    var d1 = new Date();
+    var d2 = new Date(document.getElementById("ukoncenieZmluvy1").value);
+    var d3 = new Date(document.getElementById("koniecAktualnejFixacie1").value); 
+    var iZostavajucaDlzkaUveru1 = DateDiff.inMonths(d1, d2);
+    var iZostavajucaDlzkaFixacie1 = DateDiff.inMonths(d1, d3);
 
-    if (rate == 0) return -(pv + fv)/nper;
-    
-    var pvif = Math.pow(1 + rate, nper);
-    var pmt = rate / (pvif - 1) * -(pv * pvif + fv);
+    var lurAdd = (iZostavajucaDlzkaFixacie1 >= 120) ? 1: 0;
+    var zabezpNehnutelnostou = (document.getElementById("zabezpecenyNehnutelnostou1").value == "Nie") ? false: true;
+    var lur = document.getElementById("urokovaMiera1").value;
+    var zostatokIstiny1 = document.getElementById("zostatokIstiny1").value;
 
-    if (type == 1) {
-        pmt /= (1 + rate);
-    };
-    return pmt;
-}
 
-result = PMT(0.07/12,36,-10000,0,1);
-alert(result);
+    // alert(parseFloat(lur.replace(",",".")));
+    zostatokIstiny1 = (zostatokIstiny1.replace(/ /g, '')).replace(",",".");
+
+    alert(zostatokIstiny1);
+
+
+    var lurzaklad = parseFloat((lur.replace(/ /g, '')).replace(",",".")) + parseFloat(lurAdd);
+    alert(lurzaklad);
+
+    if(iZostavajucaDlzkaUveru1 <=96){
+        stressPayment1Var2 = buffPayment1;
+    }
+    else
+    {
+        if((zabezpNehnutelnostou == true) && ((lur + lurAdd) > 0.06)){
+            stressPayment1Var2 = PMT(0.06/12,360,-zostatokIstiny1,0,0); 
+        }
+        else 
+        {
+            stressPayment1Var2 = PMT(lurzaklad/12/100,360,-zostatokIstiny1,0,0); 
+        }
+    }
+    alert(stressPayment1Var2);
+    // alert(PMT(0.0215/12,360,parsefloat(-zostatokIstiny1),0,0));    
+})
+
+
+// result = PMT(0.07/12,36,-10000,0,1);
+// alert(result);
 
 // $(function VisibilityUver1(){
 //     var isVisible = $('#collapseOne').is(":visible");
