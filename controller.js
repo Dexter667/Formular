@@ -161,7 +161,8 @@ function checkRentirementDate(){
         arr[0].innerHTML = "";
     }
 }
-//
+
+//Kontrola dôchodkového veku aj v súvislosti so splácaním posudzovaného úveru pre ľudí narodených pred rokom 1962
 function checkLeasingToRentirementDate(){
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
     var arrRetirementWomen56To61 = [[744,744,732,711,711,690],[744,744,741,720,720,699],[744,744,744,729,729,708],[744,744,744,738,738,717],[744,744,744,744,744,726],[744,744,744,744,744,735]];
@@ -197,9 +198,7 @@ function checkLeasingToRentirementDate(){
     var dateRetirementDate = dateDatumNarodenia.addMonths(arrRetirementWomen56To61[iYearIndexW][iNumberOfChildrenRaised]);
     var arr = document.getElementsByClassName("media-body info");
     var chkPohlavie = ((document.getElementById('pohlavie').value) == "Muž") ? false: true;
-    // alert(dateLeasingRuntimeHalf);
-    // alert(dateRetirementDate);
-    // alert(chkPohlavie);
+
     if(chkPohlavie = false){
         if((iYearOfBirth < 1956) || (dateRetirementDate < myDate)){
             arr[0].innerHTML = "Žiadateľka zavŕšila dôchodkový vek. Postupujte v zmysle Rizikosmernice \
@@ -245,7 +244,7 @@ function checkGender(){
 ////Výpočet stresovanej splátky 1 Variant 1 - navýšenie splátky percentom v počte zostávajúcich rokov
 
 function stressTest1Var1 (){  
-    var stressPayment1Var1 = 0;
+    
     var buffPayment1 = ((document.getElementById("splatkaUveru1").value).replace(/ /g, '')).replace(/,/, '.');
     var d1 = new Date();
     var d2 = new Date(document.getElementById("ukoncenieZmluvy1").value);
@@ -261,12 +260,12 @@ function stressTest1Var1 (){
     else{    
         stressPayment1Var1 = parseFloat(buffPayment1*mult1*mult2).toPrecision(5);
     }
-    alert(stressPayment1Var1);    
+    // alert(stressPayment1Var1);    
 }
 
 ////Výpočet stresovanej splátky 1 Variant 2 - navýšenie úrokovej sadzby
 function stressTest1Var2 (){
-    var stressPayment1Var2 = 0;
+    
     var buffPayment1 = document.getElementById("splatkaUveru1").value;
     var d1 = new Date();
     var d2 = new Date(document.getElementById("ukoncenieZmluvy1").value);
@@ -292,23 +291,49 @@ function stressTest1Var2 (){
             stressPayment1Var2 = PMT((lur + lurAdd)/12,360,-zostatokIstiny1,0,0); 
         }
     }
-    alert(stressPayment1Var2);  
+    // alert(stressPayment1Var2);  
 }
+//POZOR - global variable!
+var stressPayment1Var1 = 0;
+var stressPayment1Var2 = 0;
 
 $(function VisibilityUver1(){
     var isVisible = $('#collapseOne').is(":visible");
+
     if (isVisible == true){
-        stressPayment1Var1();
-        stressPayment1Var2();
+        stressTest1Var1();
+        stressTest1Var2();
+        // alert(Math.min(stressPayment1Var1,stressPayment1Var2));
     }
-    // alert(isVisible);
 })
 
-// $(
-//     if(VisibilityUver1 == true){
-//     alert("collapse One je vidietelny";)
-// })
+// Náklady na životné potreby
+function lifeCosts(){
+    var zivMinPlnoletaOsoba = 205.07;
+    var zivMinNezaopatreneDieta = 93.61;
+    var zivMinPlnoletaOsobaDalsia = 143.06;
+    var pocetNeplnoletychDeti = document.getElementById("pocetNeplnoletychDeti").value;
+    var pocetPlnoletychNezaopatrenychDeti = document.getElementById("pocetPlnoletychNezaopatrenychDeti").value;
+    var pocetVyzivovanychOsob = document.getElementById("pocetVyzivovanychOsob").value;
+    var nakladyNaZivotnePotreby = 0;
 
+    if(pocetVyzivovanychOsob > 1){
+        nakladyNaZivotnePotreby = (zivMinPlnoletaOsobaDalsia*(pocetPlnoletychVyzivovanych-1) + zivMinPlnoletaOsoba);
+    }
+    else{
+        if(pocetVyzivovanychOsob ==1){
+            nakladyNaZivotnePotreby = zivMinPlnoletaOsoba;
+        }
+        else{
+            nakladyNaZivotnePotreby = 0;
+        }
+        
+    }
+    }
+
+    // IF(bPocetPlnoletychVyzivovanych>1;(bZivMinPlnoletaOsobaDalsia*(bPocetPlnoletychVyzivovanych-1))+bZivMinPlnoletaOsoba;IF(bPocetPlnoletychVyzivovanych=1;bZivMinPlnoletaOsoba;0))
+
+}
 
 document.getElementById("inputDatumNarodenia").addEventListener("blur", checkGender);
 document.getElementById("inputDatumNarodenia").addEventListener("blur", checkRentirementDate);
