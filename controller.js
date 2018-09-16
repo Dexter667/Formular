@@ -56,7 +56,28 @@ anElement8 = new AutoNumeric('.mr-sm-2_collapseOne3 > input', 63500.49, {
     minimumValue: "0"
 });
 
-anElement8 = new AutoNumeric('.mr-sm-2_collapseOne4 > input', 253.21, {
+anElement9 = new AutoNumeric('.mr-sm-2_collapseOne4 > input', 253.21, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement10 = new AutoNumeric('.mr-sm-2_collapseFive1 > input', 75.49, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement11 = new AutoNumeric('.mr-sm-2_collapseFive2 > input', 17.38, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement12 = new AutoNumeric('.mr-sm-2_collapseFive3 > input', 6.91, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
@@ -135,7 +156,7 @@ function PMT(rate, nper, pv, fv, type) {
     return pmt;
 }
 
-function checkRentirementDate(){
+function checkRetirementDate(){
     var myDate = new Date();
     var result1 = myDate.addMonths(-744);
     var dateRetirementLimit = result1.addDays(-139);
@@ -163,7 +184,7 @@ function checkRentirementDate(){
 }
 
 //Kontrola dôchodkového veku aj v súvislosti so splácaním posudzovaného úveru pre ľudí narodených pred rokom 1962
-function checkLeasingToRentirementDate(){
+function checkLeasingToRetirementDate(){
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
     var arrRetirementWomen56To61 = [[744,744,732,711,711,690],[744,744,741,720,720,699],[744,744,744,729,729,708],[744,744,744,738,738,717],[744,744,744,744,744,726],[744,744,744,744,744,735]];
     var iYearIndexW;
@@ -191,9 +212,14 @@ function checkLeasingToRentirementDate(){
         iYearIndexW = 5;
         break;
     }
-    var iNumberOfChildrenRaised = document.getElementById('pocetVychovanych').value;   
+    if (document.getElementById('pocetVychovanych').value <=5){
+        var iNumberOfChildrenRaised = document.getElementById('pocetVychovanych').value;
+        }
+    else {
+        var iNumberOfChildrenRaised = 5; //maximálny počet detí ovplyvňujúci dôchodkový vek je 5 - zároveň ohraničenie matice
+    }
     var myDate = new Date();
-    var iPocetMesiacov = (document.getElementById('dlzkaFinancovania').value/2)+1
+    var iPocetMesiacov = (document.getElementById('dlzkaFinancovania').value/2)+1;
     var dateLeasingRuntimeHalf = new Date().addMonths(iPocetMesiacov);
     var dateRetirementDate = dateDatumNarodenia.addMonths(arrRetirementWomen56To61[iYearIndexW][iNumberOfChildrenRaised]);
     var arr = document.getElementsByClassName("media-body info");
@@ -233,6 +259,7 @@ var refDochodokZeny = new Date('1962-01-01');
 function checkGender(){
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
     var chkPohlavie = ((document.getElementById('pohlavie').value) == "Muž") ? false: true;
+    // alert ('false')
     if ((dateDatumNarodenia < refDochodokZeny) && (chkPohlavie == true)){
         document.getElementById("cPocetVychovanych").style.visibility = "visible";
         }
@@ -240,6 +267,17 @@ function checkGender(){
         document.getElementById("cPocetVychovanych").style.visibility = "hidden";
     }
 }
+
+//Kontrola typu splátok - pravidelné, nepravidelné
+function checkPaymentType(){
+    var chkPaymentType = ((document.getElementById("typSplatok").value) == "Pravidelné") ? true: false;
+    if (chkPaymentType == true){
+        document.getElementById("lblSplatkaILS").innerHTML = "Splátka s DPH a poistným";
+    }
+    else {
+        document.getElementById("lblSplatkaILS").innerHTML = "Suma splátok s DPH s poistným";
+    }
+    }
 
 ////Výpočet stresovanej splátky 1 Variant 1 - navýšenie splátky percentom v počte zostávajúcich rokov
 
@@ -297,7 +335,7 @@ function stressTest1Var2 (){
 var stressPayment1Var1 = 0;
 var stressPayment1Var2 = 0;
 
-$(function VisibilityUver1(){
+$(function checkVisibilityUver1(){
     var isVisible = $('#collapseOne').is(":visible");
 
     if (isVisible == true){
@@ -314,39 +352,90 @@ function lifeCosts(){
     var zivMinPlnoletaOsobaDalsia = 143.06;
     var pocetNeplnoletychDeti = document.getElementById("pocetNeplnoletychDeti").value;
     var pocetPlnoletychNezaopatrenychDeti = document.getElementById("pocetPlnoletychNezaopatrenychDeti").value;
-    var pocetVyzivovanychOsob = document.getElementById("pocetVyzivovanychOsob").value;
-    var nakladyNaZivotnePotreby = 0;
+    var pocetPlnoletychVyzivovanychOsob = document.getElementById("pocetVyzivovanychOsob").value;
+    var zostatokIstinyPlusUrok1 = document.getElementById("zostatokIstinyUrok1").value;
+    var zostatokIstinyPlusUrok2 = document.getElementById("zostatokIstinyUrok2").value;
+    var zostatokIstinyPlusUrok3 = document.getElementById("zostatokIstinyUrok3").value;
+    var zostatokIstinyPlusUrok4 = document.getElementById("zostatokIstinyUrok4").value;
+    var povolenePrecerpania = document.getElementById("vycerpanePovolenePrecerpanieKK").value;
+    var nevycerpanePovolenePrecerpania = document.getElementById("schvaleneNevycerpanePovolenePrecerpanie").value;
+    var nevycerpanePovolenePrecerpaniaKK = document.getElementById("schvaleneUveroveRamceKK").value;
+    var c1Visibility = $('#collapseOne').is(":visible");
+    var c2Visibility = $('#collapseTwo').is(":visible");
+    var c3Visibility = $('#collapseThree').is(":visible");
+    var c4Visibility = $('#collapseFour').is(":visible");
+    var c5Visibility = $('#collapseFive').is(":visible");
+    var mesacnyPrijem = (document.getElementById('cistyPrijemZiadatela').value) + (document.getElementById('prijemSpoludlznika').value);
+    var rocnyPrijem = ((document.getElementById('cistyPrijemZiadatela').value) + (document.getElementById('prijemSpoludlznika').value))*12;
+    var koeficientRocnehoPrijmu = (document.getElementById('akontacia').value < 0.2) ? 1.5: 1;
+    var platnostPoslednehoNavysenia = new Date('2019-07-01');
+    var aktualnyDatum = new Date();
+    var testPreKoeficient = DateDiff.inDays(platnostPoslednehoNavysenia,aktualnyDatum);
+    if (testPreKoeficient > 0) {
+        var koeficientNavysenieZivotnychNakladov = 0.15;
+        }
+    else {
+        var koeficientNavysenieZivotnychNakladov = 0.2;
+    }
+    
+    if (document.getElementById('typSplatok').value = "Pravidelné"){
+        var sumaSplatok = (document.getElementById('splatkaILS').value) * (document.getElementById('dlzkaFinancovania').value);
+    }
+    else {
+        var sumaSplatok = (document.getElementById('splatkaILS').value);
+    }
 
-    if(pocetVyzivovanychOsob > 1){
-        nakladyNaZivotnePotreby = (zivMinPlnoletaOsobaDalsia*(pocetPlnoletychVyzivovanych-1) + zivMinPlnoletaOsoba);
+    //náklady na živ. minimum žiadateľ + dospelé vyživované osoby
+    if(pocetPlnoletychVyzivovanychOsob > 1){
+        var nakladyNaZivotnePotreby = (zivMinPlnoletaOsobaDalsia*(pocetPlnoletychVyzivovanych-1) + zivMinPlnoletaOsoba);
     }
     else{
-        if(pocetVyzivovanychOsob ==1){
-            nakladyNaZivotnePotreby = zivMinPlnoletaOsoba;
+        if(pocetPlnoletychVyzivovanychOsob == 1){
+            var nakladyNaZivotnePotreby = zivMinPlnoletaOsoba;
         }
         else{
-            nakladyNaZivotnePotreby = 0;
+            var nakladyNaZivotnePotreby = 0;
         }
         
     }
+
+    //stress test životných nákladov -!!dopracovať kontrolu pre zahrnutie výsledkov - či je collapse window aktívne
+    if (((zostatokIstinyPlusUrok1 + zostatokIstinyPlusUrok2 + zostatokIstinyPlusUrok3 + zostatokIstinyPlusUrok4 + sumaSplatok + povolenePrecerpania + nevycerpanePovolenePrecerpania + nevycerpanePovolenePrecerpaniaKK) / rocnyPrijem) <= koeficientRocnehoPrijmu){
+        var stressTestZivotnychNakladov = 0;
+        }
+    else {
+        // ((bMesacnyPrijem-(bZivMinPlnoletaOsoba+IF(bPocetPlnoletychVyzivovanych>1;(bZivMinPlnoletaOsobaDalsia*(bPocetPlnoletychVyzivovanych-1))+bZivMinPlnoletaOsoba;IF(bPocetPlnoletychVyzivovanych=1;bZivMinPlnoletaOsoba;0))+(bPocetPlnoletychNezaopatrenychDeti+bPocetNeplnoletychDeti)*bZivMinNezaopatreneDieta))*IF(TODAY()>43281;0,2;0,15))
+        var stressTestZivotnychNakladov = (mesacnyPrijem - nakladyNaZivotnePotreby) * koeficientNavysenieZivotnychNakladov;
     }
 
-    // IF(bPocetPlnoletychVyzivovanych>1;(bZivMinPlnoletaOsobaDalsia*(bPocetPlnoletychVyzivovanych-1))+bZivMinPlnoletaOsoba;IF(bPocetPlnoletychVyzivovanych=1;bZivMinPlnoletaOsoba;0))
+    nakladyNaZivotnePotreby + ((pocetPlnoletychNezaopatrenychDeti + pocetNeplnoletychDeti) * zivMinNezaopatreneDieta) + stressTestZivotnychNakladov
+    
+    }
 
-}
+
+
 
 document.getElementById("inputDatumNarodenia").addEventListener("blur", checkGender);
-document.getElementById("inputDatumNarodenia").addEventListener("blur", checkRentirementDate);
-document.getElementById("inputDatumNarodenia").addEventListener("blur", checkLeasingToRentirementDate);
+document.getElementById("inputDatumNarodenia").addEventListener("blur", checkRetirementDate);
+document.getElementById("inputDatumNarodenia").addEventListener("blur", checkLeasingToRetirementDate);
 
 document.getElementById("pohlavie").addEventListener("change", checkGender);
-document.getElementById("pohlavie").addEventListener("change", checkRentirementDate);
-document.getElementById("pohlavie").addEventListener("change", checkLeasingToRentirementDate);
+document.getElementById("pohlavie").addEventListener("change", checkRetirementDate);
+document.getElementById("pohlavie").addEventListener("change", checkLeasingToRetirementDate);
 
-document.getElementById("dlzkaFinancovania").addEventListener("change", checkRentirementDate);
-document.getElementById("dlzkaFinancovania").addEventListener("change", checkLeasingToRentirementDate);
+document.getElementById("dlzkaFinancovania").addEventListener("change", checkRetirementDate);
+document.getElementById("dlzkaFinancovania").addEventListener("change", checkLeasingToRetirementDate);
 
-document.getElementById("pocetVychovanych").addEventListener("change", checkRentirementDate);
-document.getElementById("pocetVychovanych").addEventListener("change", checkLeasingToRentirementDate);
+document.getElementById("pocetVychovanych").addEventListener("change", checkRetirementDate);
+document.getElementById("pocetVychovanych").addEventListener("change", checkLeasingToRetirementDate);
 
-document.getElementById("kolapse1").addEventListener("click",checkVisibilityUver1);
+document.getElementById("typSplatok").addEventListener("change",checkPaymentType);
+// document.getElementById("kolapse1").addEventListener("click",checkVisibilityUver1);
+
+
+
+
+
+
+
+

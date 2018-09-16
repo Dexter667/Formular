@@ -109,7 +109,7 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
                 <div class="input-group-prepend">
                     <div class="input-group-text">€</div>
                 </div>
-                <input type="text" class="form-control" id="cistyPrijemziadatela"> <!--min=0 placeholder=1234,56-->
+                <input type="text" class="form-control" id="cistyPrijemZiadatela"> <!--min=0 placeholder=1234,56-->
             </div>
     </div>
 
@@ -127,7 +127,7 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
 
 
      <div class="form-group col-md-3">
-          <label for="typSplatok">Typ splátok</label>
+          <label for="typSplatokILS">Typ splátok</label>
           <select class="form-control" id="typSplatok">
               <option>Pravidelné</option>
               <option>Nepravidelné</option>
@@ -142,12 +142,12 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
     </div>
 
     <div class="form-group col-md-4">
-        <label for="splatkaILS">Splátka s DPH a poistným</label>
+        <label for="splatkaILS" id="lblSplatkaILS">Splátka s DPH a poistným</label>
             <div class="input-group mb-2 mr-sm-2_5">
                 <div class="input-group-prepend">
                     <div class="input-group-text">€</div>
                 </div>
-                <input type="text" class="form-control" id="splatkaILS" >
+                <input type="text" class="form-control" id="splatkaILS">
             </div>
     </div>
     
@@ -216,12 +216,12 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
                                 </div>
                                 <input type="text" class="form-control" id="zostatokIstinyUrok1">
                             </div>
-                    </div>        
+                </div>        
             </div>
 
             <div class="form-row">      
                 <div class="form-group col-md-5">
-                    <label for="akontacia">Aktuálna úroková miera úveru v %</label>
+                    <label for="urokovaMiera1">Aktuálna úroková miera úveru v %</label>
                     <div class="input-group mb-2 mr-sm-2_collapseOne2">
                         <div class="input-group-prepend">
                             <div class="input-group-text">%</div>
@@ -241,7 +241,7 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
                 </div>                
 
                 <div class="form-group col-md-3-r">
-                        <label for="splatkaUveru1">Spltáka úveru</label>
+                        <label for="splatkaUveru1">Splátka úveru</label>
                             <div class="input-group mb-2 mr-sm-2_collapseOne4">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">€</div>
@@ -277,7 +277,7 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" >
           <div class="card-body">
             
-              <div class="form-row">
+            <div class="form-row">
                   <div class="form-group col-md-5-r">
                     <label for="ukoncenieZmluvy2">Dátum ukončenia</label>
                     <input type="date" class="form-control" value="2030-07-15" id="ukoncenieZmluvy2">
@@ -288,27 +288,48 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
                       <input type="date" class="form-control" value="2022-07-15" id="koniecAktualnejFixacie2">
                   </div>
               
-                   <div class="form-group col-md-3-r">
-                        <label for="zostatokIstinyUrok2">Zostatok istiny + úrok</label>
-                        <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstinyUrok2">
-                  </div>
-              </div>
+
+                <div class="form-group col-md-3-r">
+                    <label for="zostatokIstinyUrok2">Zostatok istiny + úrok</label>
+                        <div class="input-group mb-2 mr-sm-2_collapseTwo1">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">€</div>
+                            </div>
+                            <input type="text" class="form-control" id="zostatokIstinyUrok2">
+                        </div>
+                </div> 
+            </div>
   
               <div class="form-row">
-                  <div class="form-group col-md-5">
-                      <label for="urokovaMiera2">Aktuálna úroková miera úveru v %</label>
-                      <input type="number" class="form-control" placeholder="2" id="urokovaMiera2">
-                  </div>
+                    <div class="form-group col-md-5">
+                            <label for="urokovaMiera2">Aktuálna úroková miera úveru v %</label>
+                            <div class="input-group mb-2 mr-sm-2_collapseTwo2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">%</div>
+                                </div>
+                                <input type="text" class="form-control" id="urokovaMiera2">
+                            </div>
+                    </div>
                   
-                  <div class="form-group col-md-4-r">
-                      <label for="zostatokIstiny2">Čistý zostatok istiny </label>
-                      <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstiny2">
-                  </div>
+                    <div class="form-group col-md-4-r">
+                            <label for="zostatokIstiny2">Čistý zostatok istiny</label>
+                                <div class="input-group mb-2 mr-sm-2_collapseTwo3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">€</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="zostatokIstiny2">
+                                </div>
+                    </div> 
               
-                   <div class="form-group col-md-3-r">
-                        <label for="splatkaUveru2">Splátka úveru</label>
-                        <input type="number" min=0 class="form-control" placeholder=0 id="splatkaUveru2">
-                  </div>
+                    <div class="form-group col-md-3-r">
+                            <label for="splatkaUveru2">Splátka úveru</label>
+                                <div class="input-group mb-2 mr-sm-2_collapseTwo4">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">€</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="splatkaUveru2">
+                                </div>
+                    </div>
               </div>
   
               <div class="form-row">
@@ -346,26 +367,46 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
                         <input type="date" class="form-control" value="2022-07-15" id="koniecAktualnejFixacie3">
                     </div>
                 
-                     <div class="form-group col-md-3-r">
-                          <label for="zostatokIstinyUrok3">Zostatok istiny + úrok</label>
-                          <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstinyUrok3">
-                    </div>
+                    <div class="form-group col-md-3-r">
+                            <label for="zostatokIstinyUrok3">Zostatok istiny + úrok</label>
+                                <div class="input-group mb-2 mr-sm-2_collapseThree1">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">€</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="zostatokIstinyUrok3">
+                                </div>
+                    </div> 
                 </div>
     
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label for="urokovaMiera3">Aktuálna úroková miera úveru v %</label>
-                        <input type="number" class="form-control" placeholder="2" id="urokovaMiera3">
+                            <div class="input-group mb-2 mr-sm-2_collapseThree2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">%</div>
+                                </div>
+                                    <input type="text" class="form-control" id="urokovaMiera3">
+                            </div>
                     </div>
                     
                     <div class="form-group col-md-4-r">
-                        <label for="zostatokIstiny3">Čistý zostatok istiny </label>
-                        <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstiny3">
-                    </div>
+                            <label for="zostatokIstiny3">Čistý zostatok istiny</label>
+                                <div class="input-group mb-2 mr-sm-2_collapseThree3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">€</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="zostatokIstiny3">
+                                </div>
+                    </div> 
                 
-                     <div class="form-group col-md-3-r">
-                          <label for="splatkaUveru3">Splátka úveru</label>
-                          <input type="number" min=0 class="form-control" placeholder=0 id="splatkaUveru3">
+                    <div class="form-group col-md-3-r">
+                            <label for="splatkaUveru3">Splátka úveru</label>
+                                <div class="input-group mb-2 mr-sm-2_collapseThree4">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">€</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="splatkaUveru3">
+                                </div>
                     </div>
                 </div>
     
@@ -405,27 +446,47 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
                           <input type="date" class="form-control" value="2022-07-15" id="koniecAktualnejFixacie4">
                       </div>
                   
-                       <div class="form-group col-md-3-r">
+                      <div class="form-group col-md-3-r">
                             <label for="zostatokIstinyUrok4">Zostatok istiny + úrok</label>
-                            <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstinyUrok4">
-                      </div>
+                                <div class="input-group mb-2 mr-sm-2_collapseFour1">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">€</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="zostatokIstinyUrok4">
+                                </div>
+                    </div> 
                   </div>
       
                   <div class="form-row">
-                      <div class="form-group col-md-5">
-                          <label for="urokovaMiera4">Aktuálna úroková miera úveru v %</label>
-                          <input type="number" class="form-control" placeholder="2" id="urokovaMiera4">
-                      </div>
+                        <div class="form-group col-md-5">
+                                <label for="urokovaMiera4">Aktuálna úroková miera úveru v %</label>
+                                    <div class="input-group mb-2 mr-sm-2_collapseFour2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">%</div>
+                                        </div>
+                                            <input type="text" class="form-control" id="urokovaMiera4">
+                                    </div>
+                            </div>
                       
-                      <div class="form-group col-md-4-r">
-                          <label for="zostatokIstiny4">Čistý zostatok istiny </label>
-                          <input type="number" min=0 class="form-control" placeholder=0 id="zostatokIstiny4">
-                      </div>
+                        <div class="form-group col-md-4-r">
+                            <label for="zostatokIstiny4">Čistý zostatok istiny</label>
+                                <div class="input-group mb-2 mr-sm-2_collapseFour3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">€</div>
+                                    </div>
+                                        <input type="text" class="form-control" id="zostatokIstiny4">
+                                    </div>
+                        </div> 
                   
-                       <div class="form-group col-md-3-r">
-                            <label for="splatkaUveru4">Splátka úveru</label>
-                            <input type="number" min=0 class="form-control" placeholder=0 id="splatkaUveru4">
-                      </div>
+                        <div class="form-group col-md-3-r">
+                            <label for="splatkaUveru4">Spltáka úveru</label>
+                                <div class="input-group mb-2 mr-sm-2_collapseFour4">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">€</div>
+                                    </div>
+                                        <input type="text" class="form-control" id="splatkaUveru4">
+                                    </div>
+                        </div>
                   </div>
       
                   <div class="form-row">
@@ -438,7 +499,58 @@ Skráťte dobu financovania alebo prepočítajte priemerný príjem s odhadovan�
                       </div>
                   </div>  
                 </div>
+            </div>        
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFive">
+              <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                  Kreditné karty alebo prečerpanie
+                </button>
+              </h5>
             </div>
+        
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" >
+              <div class="card-body">                
+     
+                <div class="form-row">
+                <div class="form-group col-md-8-r">
+                    <label for="vycerpanePovolenePrecerpanieKK">100% z vyčerpaných povolených prečerpaní kreditných kariet</label>
+                        <div class="input-group mb-2 mr-sm-2_collapseFive1">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">€</div>
+                            </div>
+                                <input type="text" class="form-control" id="vycerpanePovolenePrecerpanieKK">
+                        </div>
+                </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-8-r">
+                        <label for="schvaleneNevycerpanePovolenePrecerpanie">20% schválených nevyčerpaných povolených prečerpaní</label>
+                            <div class="input-group mb-2 mr-sm-2_collapseFive2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">€</div>
+                                </div>
+                                    <input type="text" class="form-control" id="schvaleneNevycerpanePovolenePrecerpanie">
+                            </div>
+                </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-8-r">
+                        <label for="schvaleneUveroveRamceKK">20% zo schválených úverových rámcov kreditných kariet</label>
+                            <div class="input-group mb-2 mr-sm-2_collapseFive3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">€</div>
+                                </div>
+                                    <input type="text" class="form-control" id="schvaleneUveroveRamceKK">
+                            </div>
+                </div>
+                </div>
+      
+            </div>
+            </div>        
           </div>
   </div>        
     <script src="jquery-3.3.1.js"></script>

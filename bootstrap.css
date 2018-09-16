@@ -1074,7 +1074,7 @@ pre code {
     max-width: 41.666667%;
     font-weight: bold;
   }
-/*reuwuired trieda*/
+/*reuquired trieda*/
   .col-md-5-r {
     -ms-flex: 0 0 41.666667%;
     flex: 0 0 41.666667%;
@@ -1104,6 +1104,13 @@ pre code {
     -ms-flex: 0 0 66.666667%;
     flex: 0 0 66.666667%;
     max-width: 66.666667%;
+  }
+  /**/
+  .col-md-8-r {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+    font-weight: bold;
   }
   .col-md-9 {
     -ms-flex: 0 0 75%;
