@@ -345,26 +345,27 @@ $(function checkVisibilityUver1(){
     }
 })
 
-// Náklady na životné potreby
-function lifeCosts(){
+// Náklady na životné potreby 
+
+$(function lifeCosts(){
     var zivMinPlnoletaOsoba = 205.07;
     var zivMinNezaopatreneDieta = 93.61;
     var zivMinPlnoletaOsobaDalsia = 143.06;
     var pocetNeplnoletychDeti = document.getElementById("pocetNeplnoletychDeti").value;
     var pocetPlnoletychNezaopatrenychDeti = document.getElementById("pocetPlnoletychNezaopatrenychDeti").value;
     var pocetPlnoletychVyzivovanychOsob = document.getElementById("pocetVyzivovanychOsob").value;
-    var zostatokIstinyPlusUrok1 = document.getElementById("zostatokIstinyUrok1").value;
-    var zostatokIstinyPlusUrok2 = document.getElementById("zostatokIstinyUrok2").value;
-    var zostatokIstinyPlusUrok3 = document.getElementById("zostatokIstinyUrok3").value;
-    var zostatokIstinyPlusUrok4 = document.getElementById("zostatokIstinyUrok4").value;
-    var povolenePrecerpania = document.getElementById("vycerpanePovolenePrecerpanieKK").value;
-    var nevycerpanePovolenePrecerpania = document.getElementById("schvaleneNevycerpanePovolenePrecerpanie").value;
-    var nevycerpanePovolenePrecerpaniaKK = document.getElementById("schvaleneUveroveRamceKK").value;
     var c1Visibility = $('#collapseOne').is(":visible");
     var c2Visibility = $('#collapseTwo').is(":visible");
     var c3Visibility = $('#collapseThree').is(":visible");
     var c4Visibility = $('#collapseFour').is(":visible");
     var c5Visibility = $('#collapseFive').is(":visible");
+    var zostatokIstinyPlusUrok1 = (c1Visibility == true) ? document.getElementById("zostatokIstinyUrok1").value: 0;
+    var zostatokIstinyPlusUrok2 = (c2Visibility == true) ? document.getElementById("zostatokIstinyUrok2").value: 0;
+    var zostatokIstinyPlusUrok3 = (c3Visibility == true) ? document.getElementById("zostatokIstinyUrok3").value: 0;
+    var zostatokIstinyPlusUrok4 = (c4Visibility == true) ? document.getElementById("zostatokIstinyUrok4").value: 0;
+    var povolenePrecerpania = document.getElementById("vycerpanePovolenePrecerpanieKK").value;
+    var nevycerpanePovolenePrecerpania = document.getElementById("schvaleneNevycerpanePovolenePrecerpanie").value;
+    var nevycerpanePovolenePrecerpaniaKK = document.getElementById("schvaleneUveroveRamceKK").value;
     var mesacnyPrijem = (document.getElementById('cistyPrijemZiadatela').value) + (document.getElementById('prijemSpoludlznika').value);
     var rocnyPrijem = ((document.getElementById('cistyPrijemZiadatela').value) + (document.getElementById('prijemSpoludlznika').value))*12;
     var koeficientRocnehoPrijmu = (document.getElementById('akontacia').value < 0.2) ? 1.5: 1;
@@ -379,7 +380,7 @@ function lifeCosts(){
     }
     
     if (document.getElementById('typSplatok').value = "Pravidelné"){
-        var sumaSplatok = (document.getElementById('splatkaILS').value) * (document.getElementById('dlzkaFinancovania').value);
+        var sumaSplatok = (parseFloat((document.getElementById('splatkaILS').value).replace(",",".")) * (document.getElementById('dlzkaFinancovania').value));
     }
     else {
         var sumaSplatok = (document.getElementById('splatkaILS').value);
@@ -408,11 +409,18 @@ function lifeCosts(){
         var stressTestZivotnychNakladov = (mesacnyPrijem - nakladyNaZivotnePotreby) * koeficientNavysenieZivotnychNakladov;
     }
 
-    nakladyNaZivotnePotreby + ((pocetPlnoletychNezaopatrenychDeti + pocetNeplnoletychDeti) * zivMinNezaopatreneDieta) + stressTestZivotnychNakladov
+
+    // alert (sumaSplatok.toFixed(2));
+    alert (rocnyPrijem);
+
+    // alert (nakladyNaZivotnePotreby + ((pocetPlnoletychNezaopatrenychDeti + pocetNeplnoletychDeti) * zivMinNezaopatreneDieta) + stressTestZivotnychNakladov);
     
     }
+)
 
 
+
+// alert (checkVisibilityUver1());
 
 
 document.getElementById("inputDatumNarodenia").addEventListener("blur", checkGender);
