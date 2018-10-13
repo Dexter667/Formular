@@ -1,4 +1,4 @@
-anElement1 = new AutoNumeric('.mr-sm-2_1 > input', 1123.35, {
+anElement1 = new AutoNumeric('.mr-sm-2_1 > input', 2000, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
@@ -12,14 +12,14 @@ anElement2 = new AutoNumeric('.mr-sm-2_2 > input', 0, {
     minimumValue: "0"
 });
 
-anElement3 = new AutoNumeric('.mr-sm-2_3 > input', 10507.82, {
+anElement3 = new AutoNumeric('.mr-sm-2_3 > input', 15000, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
     minimumValue: "0"
 });
 
-anElement4 = new AutoNumeric('.mr-sm-2_4 > input', 33.33, {
+anElement4 = new AutoNumeric('.mr-sm-2_4 > input', 15, {
     decimalCharacter: ",",
     digitGroupSeparator: " ",
     emptyInputBehavior: "max",
@@ -27,14 +27,14 @@ anElement4 = new AutoNumeric('.mr-sm-2_4 > input', 33.33, {
     minimumValue: "0"
 });
 
-anElement5 = new AutoNumeric('.mr-sm-2_5 > input', 504.29, {
+anElement5 = new AutoNumeric('.mr-sm-2_5 > input', 152, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
     minimumValue: "0"
 });
 
-anElement6 = new AutoNumeric('.mr-sm-2_collapseOne1 > input', 78654.32, {
+anElement6 = new AutoNumeric('.mr-sm-2_collapseOne1 > input', 25000, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
@@ -49,7 +49,7 @@ anElement7 = new AutoNumeric('.mr-sm-2_collapseOne2 > input', 2.15, {
     minimumValue: "0"
 });
 
-anElement8 = new AutoNumeric('.mr-sm-2_collapseOne3 > input', 63500.49, {
+anElement8 = new AutoNumeric('.mr-sm-2_collapseOne3 > input', 20000, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
@@ -63,21 +63,115 @@ anElement9 = new AutoNumeric('.mr-sm-2_collapseOne4 > input', 253.21, {
     minimumValue: "0"
 });
 
-anElement10 = new AutoNumeric('.mr-sm-2_collapseFive1 > input', 75.49, {
+anElement10 = new AutoNumeric('.mr-sm-2_collapseTwo1 > input', 65000, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
     minimumValue: "0"
 });
 
-anElement11 = new AutoNumeric('.mr-sm-2_collapseFive2 > input', 17.38, {
+anElement11 = new AutoNumeric('.mr-sm-2_collapseTwo2 > input', 1.15, {
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    emptyInputBehavior: "max",
+    maximumValue: "99.99",
+    minimumValue: "0"
+});
+
+anElement12 = new AutoNumeric('.mr-sm-2_collapseTwo3 > input', 2000, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
     minimumValue: "0"
 });
 
-anElement12 = new AutoNumeric('.mr-sm-2_collapseFive3 > input', 6.91, {
+anElement13 = new AutoNumeric('.mr-sm-2_collapseTwo4 > input', 173.21, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement14 = new AutoNumeric('.mr-sm-2_collapseThree1 > input', 65000, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement15 = new AutoNumeric('.mr-sm-2_collapseThree2 > input', 1.15, {
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    emptyInputBehavior: "max",
+    maximumValue: "99.99",
+    minimumValue: "0"
+});
+
+anElement16 = new AutoNumeric('.mr-sm-2_collapseThree3 > input', 12000, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement17 = new AutoNumeric('.mr-sm-2_collapseThree4 > input', 753.21, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement18 = new AutoNumeric('.mr-sm-2_collapseFour1 > input', 65000, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement19 = new AutoNumeric('.mr-sm-2_collapseFour2 > input', 1.15, {
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    emptyInputBehavior: "max",
+    maximumValue: "99.99",
+    minimumValue: "0"
+});
+
+anElement20 = new AutoNumeric('.mr-sm-2_collapseFour3 > input', 21000, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement21 = new AutoNumeric('.mr-sm-2_collapseFour4 > input', 653.21, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement22 = new AutoNumeric('.mr-sm-2_collapseFive1 > input', 0, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement23 = new AutoNumeric('.mr-sm-2_collapseFive2 > input', 0, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement24 = new AutoNumeric('.mr-sm-2_collapseFive3 > input', 0, {
+    currencySymbol: " ",
+    decimalCharacter: ",",
+    digitGroupSeparator: " ",
+    minimumValue: "0"
+});
+
+anElement25 = new AutoNumeric('.mr-sm-2_collapseFive4 > input', 10, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
@@ -162,8 +256,6 @@ function checkRetirementDate(){
     var dateRetirementLimit = result1.addDays(-139);
     var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
     var arr =  document.getElementsByClassName("media-body info");
-    // alert(dateDatumNarodenia);
-    // alert(dateRetirementLimit);
     if(dateDatumNarodenia < dateRetirementLimit){
         bDochodkovyVek = true;
         // alert("pohlavie");
@@ -279,8 +371,7 @@ function checkPaymentType(){
     }
     }
 
-////Výpočet stresovanej splátky 1 Variant 1 - navýšenie splátky percentom v počte zostávajúcich rokov
-
+//Výpočet stresovanej splátky 1 Variant 1 - navýšenie splátky percentom v počte zostávajúcich rokov
 function stressTest1Var1 (){  
     
     var buffPayment1 = ((document.getElementById("splatkaUveru1").value).replace(/ /g, '')).replace(/,/, '.');
@@ -296,25 +387,23 @@ function stressTest1Var1 (){
         stressPayment1Var1 = buffPayment1;
     }
     else{    
-        stressPayment1Var1 = parseFloat(buffPayment1*mult1*mult2).toPrecision(5);
-    }
-    // alert(stressPayment1Var1);    
+        stressPayment1Var1 = Math.round(buffPayment1*mult1*mult2*100)/100;
+    }   
 }
 
 ////Výpočet stresovanej splátky 1 Variant 2 - navýšenie úrokovej sadzby
 function stressTest1Var2 (){
     
-    var buffPayment1 = document.getElementById("splatkaUveru1").value;
+    var buffPayment1 = parseFloat(((document.getElementById("splatkaUveru1").value).replace(/ /g, '')).replace(/,/, "."));
     var d1 = new Date();
     var d2 = new Date(document.getElementById("ukoncenieZmluvy1").value);
     var d3 = new Date(document.getElementById("koniecAktualnejFixacie1").value); 
     var iZostavajucaDlzkaUveru1 = DateDiff.inMonths(d1, d2);
     var iZostavajucaDlzkaFixacie1 = DateDiff.inMonths(d1, d3);
-
     var lurAdd = (iZostavajucaDlzkaFixacie1 >= 120) ? 0.01: 0.02;
     var zabezpNehnutelnostou = (document.getElementById("zabezpecenyNehnutelnostou1").value == "Nie") ? false: true;
-    var lur = parseFloat((document.getElementById("urokovaMiera1").value).replace(",","."))/100;
-    var zostatokIstiny1 = parseFloat(((document.getElementById("zostatokIstiny1").value).replace(/ /g, '')).replace(/,/, "."));
+    var lur = parseFloat((document.getElementById('urokovaMiera1').value).replace(/ /g,'').replace(/,/g,'.'))/100; 
+    var zostatokIstiny1 = parseFloat(((document.getElementById("zostatokIstiny1").value).replace(/ /g, '')).replace(/,/, ".")); //zostatokIstiny1
 
     if(iZostavajucaDlzkaUveru1 <=96){
         stressPayment1Var2 = buffPayment1;
@@ -322,26 +411,230 @@ function stressTest1Var2 (){
     else
     {
         if((zabezpNehnutelnostou == true) && ((lur + lurAdd) > 0.06)){
-            stressPayment1Var2 = PMT(0.06/12,360,-zostatokIstiny1,0,0); 
+            stressPayment1Var2 = Math.round(PMT(0.06/12,360,-zostatokIstiny1,0,0)*100)/100;
         }
         else 
         {
-            stressPayment1Var2 = PMT((lur + lurAdd)/12,360,-zostatokIstiny1,0,0); 
+            stressPayment1Var2 = Math.round(PMT((lur + lurAdd)/12,360,-zostatokIstiny1,0,0)*100)/100; 
         }
     }
-    // alert(stressPayment1Var2);  
+    if(stressPayment1Var2 < buffPayment1){
+        stressPayment1Var2 = buffPayment1;
+    }
 }
+
+//Výpočet stresovanej splátky 2 Variant 1 - navýšenie splátky percentom v počte zostávajúcich rokov
+
+function stressTest2Var1 (){    
+    var buffPayment2 = ((document.getElementById("splatkaUveru2").value).replace(/ /g, '')).replace(/,/, '.');
+    var d1 = new Date();
+    var d2 = new Date(document.getElementById("ukoncenieZmluvy2").value);
+    var d3 = new Date(document.getElementById("koniecAktualnejFixacie2").value); 
+    var iZostavajucaDlzkaUveru2 = DateDiff.inMonths(d1, d2);
+    var iZostavajucaDlzkaFixacie2 = DateDiff.inMonths(d1, d3);
+    var mult1 = 1 + (iZostavajucaDlzkaUveru2/12/100);
+    var mult2 = (iZostavajucaDlzkaFixacie2 >= 120) ? 0.5: 1;
+
+    if(iZostavajucaDlzkaUveru2 <=96){
+        stressPayment2Var1 = buffPayment2;
+    }
+    else{    
+        stressPayment2Var1 = parseFloat(buffPayment2*mult1*mult2).toPrecision(5);
+    }
+}
+
+////Výpočet stresovanej splátky 2 Variant 2 - navýšenie úrokovej sadzby
+function stressTest2Var2 (){
+    
+    var buffPayment2 = parseFloat(((document.getElementById("splatkaUveru2").value).replace(/ /g, '')).replace(/,/, "."));
+    var d1 = new Date();
+    var d2 = new Date(document.getElementById("ukoncenieZmluvy2").value);
+    var d3 = new Date(document.getElementById("koniecAktualnejFixacie2").value); 
+    var iZostavajucaDlzkaUveru2 = DateDiff.inMonths(d1, d2);
+    var iZostavajucaDlzkaFixacie2 = DateDiff.inMonths(d1, d3);
+
+    var lurAdd = (iZostavajucaDlzkaFixacie2 >= 120) ? 0.01: 0.02;
+    var zabezpNehnutelnostou = (document.getElementById("zabezpecenyNehnutelnostou2").value == "Nie") ? false: true;
+    var lur = parseFloat((document.getElementById('urokovaMiera2').value).replace(/ /g,'').replace(/,/g,'.'))/100; 
+    var zostatokIstiny2 = parseFloat(((document.getElementById("zostatokIstiny2").value).replace(/ /g, '')).replace(/,/, ".")); //zostatokIstiny1
+
+    if(iZostavajucaDlzkaUveru2 <=96){
+        stressPayment2Var2 = buffPayment2;
+    }
+    else
+    {
+        if((zabezpNehnutelnostou == true) && ((lur + lurAdd) > 0.06)){
+            stressPayment2Var2 = PMT(0.06/12,360,-zostatokIstiny2,0,0); 
+        }
+        else 
+        {
+            stressPayment2Var2 = PMT((lur + lurAdd)/12,360,-zostatokIstiny2,0,0); 
+        }
+    }
+    if(stressPayment2Var2 < buffPayment2){
+        stressPayment2Var2 = buffPayment2;
+    }
+}
+
+//Výpočet stresovanej splátky 3 Variant 1 - navýšenie splátky percentom v počte zostávajúcich rokov
+
+function stressTest3Var1 (){    
+    var buffPayment3 = ((document.getElementById("splatkaUveru3").value).replace(/ /g, '')).replace(/,/, '.');
+    var d1 = new Date();
+    var d2 = new Date(document.getElementById("ukoncenieZmluvy3").value);
+    var d3 = new Date(document.getElementById("koniecAktualnejFixacie3").value); 
+    var iZostavajucaDlzkaUveru3 = DateDiff.inMonths(d1, d2);
+    var iZostavajucaDlzkaFixacie3 = DateDiff.inMonths(d1, d3);
+    var mult1 = 1 + (iZostavajucaDlzkaUveru3/12/100);
+    var mult2 = (iZostavajucaDlzkaFixacie3 >= 120) ? 0.5: 1;
+
+    if(iZostavajucaDlzkaUveru3 <=96){
+        stressPayment3Var1 = buffPayment3;
+    }
+    else{    
+        stressPayment3Var1 = parseFloat(buffPayment3*mult1*mult2).toPrecision(5);
+    }
+}
+
+////Výpočet stresovanej splátky 3 Variant 2 - navýšenie úrokovej sadzby
+function stressTest3Var2 (){
+    
+    var buffPayment3 = parseFloat(((document.getElementById("splatkaUveru3").value).replace(/ /g, '')).replace(/,/, "."));
+    var d1 = new Date();
+    var d2 = new Date(document.getElementById("ukoncenieZmluvy3").value);
+    var d3 = new Date(document.getElementById("koniecAktualnejFixacie3").value); 
+    var iZostavajucaDlzkaUveru3 = DateDiff.inMonths(d1, d2);
+    var iZostavajucaDlzkaFixacie3 = DateDiff.inMonths(d1, d3);
+
+    var lurAdd = (iZostavajucaDlzkaFixacie3 >= 120) ? 0.01: 0.02;
+    var zabezpNehnutelnostou = (document.getElementById("zabezpecenyNehnutelnostou3").value == "Nie") ? false: true;
+    var lur = parseFloat((document.getElementById('urokovaMiera3').value).replace(/ /g,'').replace(/,/g,'.'))/100; 
+    var zostatokIstiny3 = parseFloat(((document.getElementById("zostatokIstiny3").value).replace(/ /g, '')).replace(/,/, ".")); //zostatokIstiny1
+
+    if(iZostavajucaDlzkaUveru3 <=96){
+        stressPayment3Var2 = buffPayment3;
+    }
+    else
+    {
+        if((zabezpNehnutelnostou == true) && ((lur + lurAdd) > 0.06)){
+            stressPayment3Var2 = PMT(0.06/12,360,-zostatokIstiny3,0,0); 
+        }
+        else 
+        {
+            stressPayment3Var2 = PMT((lur + lurAdd)/12,360,-zostatokIstiny3,0,0); 
+        }
+    }
+    if(stressPayment3Var2 < buffPayment3){
+        stressPayment3Var2 = buffPayment3;
+    }
+}
+
+//Výpočet stresovanej splátky 4 Variant 1 - navýšenie splátky percentom v počte zostávajúcich rokov
+
+function stressTest4Var1 (){    
+    var buffPayment4 = ((document.getElementById("splatkaUveru4").value).replace(/ /g, '')).replace(/,/, '.');
+    var d1 = new Date();
+    var d2 = new Date(document.getElementById("ukoncenieZmluvy4").value);
+    var d3 = new Date(document.getElementById("koniecAktualnejFixacie4").value); 
+    var iZostavajucaDlzkaUveru4 = DateDiff.inMonths(d1, d2);
+    var iZostavajucaDlzkaFixacie4 = DateDiff.inMonths(d1, d3);
+    var mult1 = 1 + (iZostavajucaDlzkaUveru4/12/100);
+    var mult2 = (iZostavajucaDlzkaFixacie4 >= 120) ? 0.5: 1;
+
+    if(iZostavajucaDlzkaUveru4 <=96){
+        stressPayment4Var1 = buffPayment4;
+    }
+    else{    
+        stressPayment4Var1 = parseFloat(buffPayment4*mult1*mult2).toPrecision(5);
+    }
+}
+
+////Výpočet stresovanej splátky 4 Variant 2 - navýšenie úrokovej sadzby
+function stressTest4Var2 (){
+    
+    var buffPayment4 = parseFloat(((document.getElementById("splatkaUveru4").value).replace(/ /g, '')).replace(/,/, "."));
+    var d1 = new Date();
+    var d2 = new Date(document.getElementById("ukoncenieZmluvy4").value);
+    var d3 = new Date(document.getElementById("koniecAktualnejFixacie4").value); 
+    var iZostavajucaDlzkaUveru4 = DateDiff.inMonths(d1, d2);
+    var iZostavajucaDlzkaFixacie4 = DateDiff.inMonths(d1, d3);
+
+    var lurAdd = (iZostavajucaDlzkaFixacie4 >= 120) ? 0.01: 0.02;
+    var zabezpNehnutelnostou = (document.getElementById("zabezpecenyNehnutelnostou4").value == "Nie") ? false: true;
+    var lur = parseFloat((document.getElementById('urokovaMiera4').value).replace(/ /g,'').replace(/,/g,'.'))/100; 
+    var zostatokIstiny4 = parseFloat(((document.getElementById("zostatokIstiny4").value).replace(/ /g, '')).replace(/,/, ".")); //zostatokIstiny1
+
+    if(iZostavajucaDlzkaUveru4 <=96){
+        stressPayment4Var2 = buffPayment4;
+    }
+    else
+    {
+        if((zabezpNehnutelnostou == true) && ((lur + lurAdd) > 0.06)){
+            stressPayment4Var2 = PMT(0.06/12,360,-zostatokIstiny4,0,0); 
+        }
+        else 
+        {
+            stressPayment4Var2 = PMT((lur + lurAdd)/12,360,-zostatokIstiny4,0,0); 
+        }
+    }
+    if(stressPayment4Var2 < buffPayment4){
+        stressPayment4Var2 = buffPayment4;
+    }
+}
+
 //POZOR - global variable!
 var stressPayment1Var1 = 0;
 var stressPayment1Var2 = 0;
+var stressPayment2Var1 = 0;
+var stressPayment2Var2 = 0;
+var stressPayment3Var1 = 0;
+var stressPayment3Var2 = 0;
+var stressPayment4Var1 = 0;
+var stressPayment4Var2 = 0;
+var stressPayment1 = 0;
+var stressPayment2 = 0;
+var stressPayment3 = 0;
+var stressPayment4 = 0;
 
 $(function checkVisibilityUver1(){
-    var isVisible = $('#collapseOne').is(":visible");
+    var isVisible1 = $('#collapseOne').is(":visible");
+    var isVisible2 = $('#collapseTwo').is(":visible");
+    var isVisible3 = $('#collapseThree').is(":visible");
+    var isVisible4 = $('#collapseFour').is(":visible");
 
-    if (isVisible == true){
+    if (isVisible1 == true){
         stressTest1Var1();
         stressTest1Var2();
-        // alert(Math.min(stressPayment1Var1,stressPayment1Var2));
+        // alert(stressPayment1Var1);
+        // alert(stressPayment1Var2);
+        stressPayment1 = Math.min(stressPayment1Var1,stressPayment1Var2);  //dotiahne nižšiu z dvoch spôsobov stresovania splátok
+    }
+    else{
+        stressPayment1 = 0
+    }
+    if (isVisible2 == true){
+        stressTest2Var1();
+        stressTest2Var2();
+        stressPayment2 = Math.min(stressPayment2Var1,stressPayment2Var2);
+    }
+    else{
+        stressPayment2 = 0
+    }
+    if (isVisible3 == true){
+        stressTest3Var1();
+        stressTest3Var2();
+        stressPayment3 = Math.min(stressPayment3Var1,stressPayment3Var2);
+    }
+    else{
+        stressPayment3 = 0
+    }
+    if (isVisible4 == true){
+        stressTest4Var1();
+        stressTest4Var2();
+        stressPayment4 = Math.min(stressPayment4Var1,stressPayment4Var2);
+    }
+    else{
+        stressPayment4 = 0
     }
 })
 
@@ -353,75 +646,78 @@ $(function lifeCosts(){
     var zivMinPlnoletaOsobaDalsia = 143.06;
     var pocetNeplnoletychDeti = document.getElementById("pocetNeplnoletychDeti").value;
     var pocetPlnoletychNezaopatrenychDeti = document.getElementById("pocetPlnoletychNezaopatrenychDeti").value;
-    var pocetPlnoletychVyzivovanychOsob = document.getElementById("pocetVyzivovanychOsob").value;
+    var pocetPlnoletychVyzivovanychOsob = parseInt((document.getElementById('pocetVyzivovanychOsob').value).replace(/ /g,'').replace(/,/g,'.')) + 1;
     var c1Visibility = $('#collapseOne').is(":visible");
     var c2Visibility = $('#collapseTwo').is(":visible");
     var c3Visibility = $('#collapseThree').is(":visible");
     var c4Visibility = $('#collapseFour').is(":visible");
     var c5Visibility = $('#collapseFive').is(":visible");
-    var zostatokIstinyPlusUrok1 = (c1Visibility == true) ? document.getElementById("zostatokIstinyUrok1").value: 0;
-    var zostatokIstinyPlusUrok2 = (c2Visibility == true) ? document.getElementById("zostatokIstinyUrok2").value: 0;
-    var zostatokIstinyPlusUrok3 = (c3Visibility == true) ? document.getElementById("zostatokIstinyUrok3").value: 0;
-    var zostatokIstinyPlusUrok4 = (c4Visibility == true) ? document.getElementById("zostatokIstinyUrok4").value: 0;
-    var povolenePrecerpania = document.getElementById("vycerpanePovolenePrecerpanieKK").value;
-    var nevycerpanePovolenePrecerpania = document.getElementById("schvaleneNevycerpanePovolenePrecerpanie").value;
-    var nevycerpanePovolenePrecerpaniaKK = document.getElementById("schvaleneUveroveRamceKK").value;
-    var mesacnyPrijem = (document.getElementById('cistyPrijemZiadatela').value) + (document.getElementById('prijemSpoludlznika').value);
-    var rocnyPrijem = ((document.getElementById('cistyPrijemZiadatela').value) + (document.getElementById('prijemSpoludlznika').value))*12;
-    var koeficientRocnehoPrijmu = (document.getElementById('akontacia').value < 0.2) ? 1.5: 1;
-    var platnostPoslednehoNavysenia = new Date('2019-07-01');
-    var aktualnyDatum = new Date();
-    var testPreKoeficient = DateDiff.inDays(platnostPoslednehoNavysenia,aktualnyDatum);
-    if (testPreKoeficient > 0) {
-        var koeficientNavysenieZivotnychNakladov = 0.15;
-        }
-    else {
-        var koeficientNavysenieZivotnychNakladov = 0.2;
-    }
-    
+    var zostatokIstinyPlusUrok1 = (c1Visibility == true) ? parseFloat((document.getElementById('zostatokIstinyUrok1').value).replace(/ /g,'').replace(/,/g,'.')): 0;
+    var zostatokIstinyPlusUrok2 = (c2Visibility == true) ? parseFloat((document.getElementById('zostatokIstinyUrok2').value).replace(/ /g,'').replace(/,/g,'.')): 0;
+    var zostatokIstinyPlusUrok3 = (c3Visibility == true) ? parseFloat((document.getElementById('zostatokIstinyUrok3').value).replace(/ /g,'').replace(/,/g,'.')): 0;
+    var zostatokIstinyPlusUrok4 = (c4Visibility == true) ? parseFloat((document.getElementById('zostatokIstinyUrok4').value).replace(/ /g,'').replace(/,/g,'.')): 0;
+    var povolenePrecerpania = parseFloat((document.getElementById('vycerpanePovolenePrecerpanieKK').value).replace(/ /g,'').replace(/,/g,'.')); 
+    var nevycerpanePovolenePrecerpania = parseFloat((document.getElementById('schvaleneNevycerpanePovolenePrecerpanie').value).replace(/ /g,'').replace(/,/g,'.')); 
+    var nevycerpanePovolenePrecerpaniaKK = parseFloat((document.getElementById('schvaleneUveroveRamceKK').value).replace(/ /g,'').replace(/,/g,'.')); 
+    var mesacnyPrijem = parseFloat((document.getElementById('cistyPrijemZiadatela').value).replace(/ /g,'').replace(/,/g,'.')) + parseFloat((document.getElementById('prijemSpoludlznika').value).replace(/ /g,'').replace(/,/g,'.')); 
+    var rocnyPrijem = (parseFloat((document.getElementById('cistyPrijemZiadatela').value).replace(/ /g,'').replace(/,/g,'.')) + parseFloat((document.getElementById('prijemSpoludlznika').value).replace(/ /g,'').replace(/,/g,'.')))*12;
+    var splatkaSpoludlznik = (c5Visibility == true) ? parseFloat((document.getElementById('cistyPrijemZiadatela').value).replace(/ /g,'').replace(/,/g,'.')): 0;
+    var triPercPovolenychPrecerpani = (c5Visibility == true) ? (parseFloat((document.getElementById('schvaleneNevycerpanePovolenePrecerpanie').value).replace(/ /g,'').replace(/,/g,'.')))*0.03: 0;
+    var triPercPovolenychLimitov = (c5Visibility == true) ? (parseFloat((document.getElementById('schvaleneUveroveRamceKK').value).replace(/ /g,'').replace(/,/g,'.')))*0.03: 0; 
+    var koeficientRocnehoPrijmu = ((parseFloat((document.getElementById('akontacia').value).replace(/ /g,'').replace(/,/g,'.')))/100 < 0.2) ? 0: 1.5; 
+    var mesacnaSplatka = parseFloat((document.getElementById('splatkaILS').value).replace(/ /g,'').replace(/,/g,'.'));
+    var dlzkaFinancovania = parseFloat((document.getElementById('dlzkaFinancovania').value).replace(/ /g,'').replace(/,/g,'.'));
+
+    //mesačná splátka
     if (document.getElementById('typSplatok').value = "Pravidelné"){
-        var sumaSplatok = (parseFloat((document.getElementById('splatkaILS').value).replace(",",".")) * (document.getElementById('dlzkaFinancovania').value));
+        var splatkaILSMesacne = mesacnaSplatka; 
     }
     else {
-        var sumaSplatok = (document.getElementById('splatkaILS').value);
+        var splatkaILSMesacne = mesacnaSplatka/dlzkaFinancovania; //v prípade, že je typ splátok 'Nepravidelné', tak sa v poli mesacnej splátky uvádza suma splátok s DPH a poistným a berie sa podiel mesačnej splátky a dĺžky financovania
+    }
+
+    //suma splátok
+    if (document.getElementById('typSplatok').value = "Pravidelné"){
+        var sumaSplatok = mesacnaSplatka * dlzkaFinancovania; 
+    }
+    else {
+        var sumaSplatok = mesacnaSplatka; //v prípade, že je typ splátok 'Nepravidelné', tak sa v poli mesacnej splátky uvádza suma splátok s DPH a poistným a berie sa priamo táto hodnota 
     }
 
     //náklady na živ. minimum žiadateľ + dospelé vyživované osoby
     if(pocetPlnoletychVyzivovanychOsob > 1){
-        var nakladyNaZivotnePotreby = (zivMinPlnoletaOsobaDalsia*(pocetPlnoletychVyzivovanych-1) + zivMinPlnoletaOsoba);
+        var nakladyNaZivotnePotrebyDospely = (zivMinPlnoletaOsobaDalsia*(pocetPlnoletychVyzivovanych-1) + zivMinPlnoletaOsoba);
     }
     else{
         if(pocetPlnoletychVyzivovanychOsob == 1){
-            var nakladyNaZivotnePotreby = zivMinPlnoletaOsoba;
+            var nakladyNaZivotnePotrebyDospely = zivMinPlnoletaOsoba;
         }
         else{
-            var nakladyNaZivotnePotreby = 0;
+            var nakladyNaZivotnePotrebyDospely = 0;
+            } 
         }
-        
-    }
 
-    //stress test životných nákladov -!!dopracovať kontrolu pre zahrnutie výsledkov - či je collapse window aktívne
+    //náklady vyživované deti
+    if(pocetPlnoletychVyzivovanychOsob > 1){
+        var nakladyNaDeti = (pocetPlnoletychNezaopatrenychDeti+pocetNeplnoletychDeti) * zivMinNezaopatreneDieta;
+    }
+    else{
+        var nakladyNaDeti = 0;
+    }
+    
+    //stress test životných nákladov
     if (((zostatokIstinyPlusUrok1 + zostatokIstinyPlusUrok2 + zostatokIstinyPlusUrok3 + zostatokIstinyPlusUrok4 + sumaSplatok + povolenePrecerpania + nevycerpanePovolenePrecerpania + nevycerpanePovolenePrecerpaniaKK) / rocnyPrijem) <= koeficientRocnehoPrijmu){
         var stressTestZivotnychNakladov = 0;
         }
     else {
-        // ((bMesacnyPrijem-(bZivMinPlnoletaOsoba+IF(bPocetPlnoletychVyzivovanych>1;(bZivMinPlnoletaOsobaDalsia*(bPocetPlnoletychVyzivovanych-1))+bZivMinPlnoletaOsoba;IF(bPocetPlnoletychVyzivovanych=1;bZivMinPlnoletaOsoba;0))+(bPocetPlnoletychNezaopatrenychDeti+bPocetNeplnoletychDeti)*bZivMinNezaopatreneDieta))*IF(TODAY()>43281;0,2;0,15))
-        var stressTestZivotnychNakladov = (mesacnyPrijem - nakladyNaZivotnePotreby) * koeficientNavysenieZivotnychNakladov;
+        var stressTestZivotnychNakladov = (mesacnyPrijem - (nakladyNaZivotnePotrebyDospely + nakladyNaDeti))*0.2;
     }
 
+    var rozdielPrijmovZavazkov = (mesacnyPrijem-(nakladyNaZivotnePotrebyDospely + nakladyNaDeti + stressTestZivotnychNakladov)-(splatkaSpoludlznik+stressPayment1+stressPayment2+stressPayment3+stressPayment4+splatkaILSMesacne+triPercPovolenychPrecerpani+triPercPovolenychLimitov));
+    alert(rozdielPrijmovZavazkov);   
 
-    // alert (sumaSplatok.toFixed(2));
-    alert (rocnyPrijem);
-
-    // alert (nakladyNaZivotnePotreby + ((pocetPlnoletychNezaopatrenychDeti + pocetNeplnoletychDeti) * zivMinNezaopatreneDieta) + stressTestZivotnychNakladov);
-    
     }
 )
-
-
-
-// alert (checkVisibilityUver1());
-
 
 document.getElementById("inputDatumNarodenia").addEventListener("blur", checkGender);
 document.getElementById("inputDatumNarodenia").addEventListener("blur", checkRetirementDate);
