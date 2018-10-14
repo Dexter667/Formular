@@ -49,14 +49,14 @@ anElement7 = new AutoNumeric('.mr-sm-2_collapseOne2 > input', 2.15, {
     minimumValue: "0"
 });
 
-anElement8 = new AutoNumeric('.mr-sm-2_collapseOne3 > input', 20000, {
+anElement8 = new AutoNumeric('.mr-sm-2_collapseOne3 > input', 18597.54, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
     minimumValue: "0"
 });
 
-anElement9 = new AutoNumeric('.mr-sm-2_collapseOne4 > input', 253.21, {
+anElement9 = new AutoNumeric('.mr-sm-2_collapseOne4 > input', 383.99, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
@@ -150,21 +150,21 @@ anElement21 = new AutoNumeric('.mr-sm-2_collapseFour4 > input', 653.21, {
     minimumValue: "0"
 });
 
-anElement22 = new AutoNumeric('.mr-sm-2_collapseFive1 > input', 0, {
+anElement22 = new AutoNumeric('.mr-sm-2_collapseFive1 > input', 600, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
     minimumValue: "0"
 });
 
-anElement23 = new AutoNumeric('.mr-sm-2_collapseFive2 > input', 0, {
+anElement23 = new AutoNumeric('.mr-sm-2_collapseFive2 > input', 136.54, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
     minimumValue: "0"
 });
 
-anElement24 = new AutoNumeric('.mr-sm-2_collapseFive3 > input', 0, {
+anElement24 = new AutoNumeric('.mr-sm-2_collapseFive3 > input', 75, {
     currencySymbol: " ",
     decimalCharacter: ",",
     digitGroupSeparator: " ",
@@ -177,6 +177,12 @@ anElement25 = new AutoNumeric('.mr-sm-2_collapseFive4 > input', 10, {
     digitGroupSeparator: " ",
     minimumValue: "0"
 });
+
+//Funkcia toSpaces nahradí autonumeric, tam kde nefunguje, napr. obsah tabuľky <td> tag
+
+function toSpaces(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
 
 //EDATE Functions
 Date.isLeapYear = function (year) { 
@@ -596,7 +602,7 @@ var stressPayment2 = 0;
 var stressPayment3 = 0;
 var stressPayment4 = 0;
 
-$(function checkVisibilityUver1(){
+function checkVisibilityUver(){
     var isVisible1 = $('#collapseOne').is(":visible");
     var isVisible2 = $('#collapseTwo').is(":visible");
     var isVisible3 = $('#collapseThree').is(":visible");
@@ -605,8 +611,7 @@ $(function checkVisibilityUver1(){
     if (isVisible1 == true){
         stressTest1Var1();
         stressTest1Var2();
-        // alert(stressPayment1Var1);
-        // alert(stressPayment1Var2);
+        // alert('stressPayment1Var2');
         stressPayment1 = Math.min(stressPayment1Var1,stressPayment1Var2);  //dotiahne nižšiu z dvoch spôsobov stresovania splátok
     }
     else{
@@ -636,11 +641,11 @@ $(function checkVisibilityUver1(){
     else{
         stressPayment4 = 0
     }
-})
+}
 
 // Náklady na životné potreby 
 
-$(function lifeCosts(){
+function checkLifeCosts(){
     var zivMinPlnoletaOsoba = 205.07;
     var zivMinNezaopatreneDieta = 93.61;
     var zivMinPlnoletaOsobaDalsia = 143.06;
@@ -661,15 +666,15 @@ $(function lifeCosts(){
     var nevycerpanePovolenePrecerpaniaKK = parseFloat((document.getElementById('schvaleneUveroveRamceKK').value).replace(/ /g,'').replace(/,/g,'.')); 
     var mesacnyPrijem = parseFloat((document.getElementById('cistyPrijemZiadatela').value).replace(/ /g,'').replace(/,/g,'.')) + parseFloat((document.getElementById('prijemSpoludlznika').value).replace(/ /g,'').replace(/,/g,'.')); 
     var rocnyPrijem = (parseFloat((document.getElementById('cistyPrijemZiadatela').value).replace(/ /g,'').replace(/,/g,'.')) + parseFloat((document.getElementById('prijemSpoludlznika').value).replace(/ /g,'').replace(/,/g,'.')))*12;
-    var splatkaSpoludlznik = (c5Visibility == true) ? parseFloat((document.getElementById('cistyPrijemZiadatela').value).replace(/ /g,'').replace(/,/g,'.')): 0;
-    var triPercPovolenychPrecerpani = (c5Visibility == true) ? (parseFloat((document.getElementById('schvaleneNevycerpanePovolenePrecerpanie').value).replace(/ /g,'').replace(/,/g,'.')))*0.03: 0;
-    var triPercPovolenychLimitov = (c5Visibility == true) ? (parseFloat((document.getElementById('schvaleneUveroveRamceKK').value).replace(/ /g,'').replace(/,/g,'.')))*0.03: 0; 
+    var splatkaSpoludlznik = (c5Visibility == true) ? parseFloat((document.getElementById('splatkaSpoludlznik').value).replace(/ /g,'').replace(/,/g,'.')): 0;
+    var triPercPovolenychPrecerpani = (c5Visibility == true) ? (parseFloat((document.getElementById('schvaleneNevycerpanePovolenePrecerpanie').value).replace(/ /g,'').replace(/,/g,'.')))*5*0.03: 0;
+    var triPercPovolenychLimitov = (c5Visibility == true) ? (parseFloat((document.getElementById('schvaleneUveroveRamceKK').value).replace(/ /g,'').replace(/,/g,'.')))*5*0.03: 0;
     var koeficientRocnehoPrijmu = ((parseFloat((document.getElementById('akontacia').value).replace(/ /g,'').replace(/,/g,'.')))/100 < 0.2) ? 0: 1.5; 
     var mesacnaSplatka = parseFloat((document.getElementById('splatkaILS').value).replace(/ /g,'').replace(/,/g,'.'));
     var dlzkaFinancovania = parseFloat((document.getElementById('dlzkaFinancovania').value).replace(/ /g,'').replace(/,/g,'.'));
 
     //mesačná splátka
-    if (document.getElementById('typSplatok').value = "Pravidelné"){
+    if (document.getElementById('typSplatok').value == "Pravidelné"){
         var splatkaILSMesacne = mesacnaSplatka; 
     }
     else {
@@ -677,7 +682,8 @@ $(function lifeCosts(){
     }
 
     //suma splátok
-    if (document.getElementById('typSplatok').value = "Pravidelné"){
+   
+    if (document.getElementById('typSplatok').value == "Pravidelné"){
         var sumaSplatok = mesacnaSplatka * dlzkaFinancovania; 
     }
     else {
@@ -714,10 +720,11 @@ $(function lifeCosts(){
     }
 
     var rozdielPrijmovZavazkov = (mesacnyPrijem-(nakladyNaZivotnePotrebyDospely + nakladyNaDeti + stressTestZivotnychNakladov)-(splatkaSpoludlznik+stressPayment1+stressPayment2+stressPayment3+stressPayment4+splatkaILSMesacne+triPercPovolenychPrecerpani+triPercPovolenychLimitov));
-    alert(rozdielPrijmovZavazkov);   
-
+    // alert(triPercPovolenychPrecerpani);
+    // alert(rozdielPrijmovZavazkov);  
+    // document.getElementById("vysledokTabulka").rows[2].cells[1].innerHTML = (rozdielPrijmovZavazkov.toFixed(2)+'€'); //console.log(toCommas(123456789));
+    document.getElementById("vysledokTabulka").rows[2].cells[1].innerHTML = toSpaces(rozdielPrijmovZavazkov.toFixed(2).replace('.',',')+'€'); //(rozdielPrijmovZavazkov.toFixed(2)+'€'); //console.log(toCommas(123456789));
     }
-)
 
 document.getElementById("inputDatumNarodenia").addEventListener("blur", checkGender);
 document.getElementById("inputDatumNarodenia").addEventListener("blur", checkRetirementDate);
@@ -734,6 +741,21 @@ document.getElementById("pocetVychovanych").addEventListener("change", checkReti
 document.getElementById("pocetVychovanych").addEventListener("change", checkLeasingToRetirementDate);
 
 document.getElementById("typSplatok").addEventListener("change",checkPaymentType);
+document.getElementById("typSplatok").addEventListener("change",checkVisibilityUver);
+document.getElementById("typSplatok").addEventListener("change",checkLifeCosts);
+
+
+document.getElementById("pocetNeplnoletychDeti").addEventListener("blur",checkVisibilityUver);
+document.getElementById("pocetNeplnoletychDeti").addEventListener("blur",checkLifeCosts);
+
+document.getElementById("cistyPrijemZiadatela").addEventListener("blur",checkVisibilityUver);
+document.getElementById("cistyPrijemZiadatela").addEventListener("blur",checkLifeCosts);
+document.getElementById("prijemSpoludlznika").addEventListener("blur",checkVisibilityUver);
+document.getElementById("prijemSpoludlznika").addEventListener("blur",checkLifeCosts);
+
+
+
+
 // document.getElementById("kolapse1").addEventListener("click",checkVisibilityUver1);
 
 
