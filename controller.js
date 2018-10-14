@@ -34,6 +34,14 @@ anElement5 = new AutoNumeric('.mr-sm-2_5 > input', 152, {
     minimumValue: "0"
 });
 
+anElement61 = new AutoNumeric('.mr-sm-2_6 > input', 0, {
+    digitGroupSeparator: " ",
+    emptyInputBehavior: "min",
+    maximumValue: "20",
+    minimumValue: "0",
+    aPad: "false"   //no decimals
+});
+
 anElement6 = new AutoNumeric('.mr-sm-2_collapseOne1 > input', 25000, {
     currencySymbol: " ",
     decimalCharacter: ",",
@@ -704,7 +712,7 @@ function checkLifeCosts(){
         }
 
     //náklady vyživované deti
-    if(pocetPlnoletychVyzivovanychOsob > 1){
+    if(pocetNeplnoletychDeti+pocetPlnoletychNezaopatrenychDeti > 1){
         var nakladyNaDeti = (pocetPlnoletychNezaopatrenychDeti+pocetNeplnoletychDeti) * zivMinNezaopatreneDieta;
     }
     else{
@@ -720,7 +728,7 @@ function checkLifeCosts(){
     }
 
     var rozdielPrijmovZavazkov = (mesacnyPrijem-(nakladyNaZivotnePotrebyDospely + nakladyNaDeti + stressTestZivotnychNakladov)-(splatkaSpoludlznik+stressPayment1+stressPayment2+stressPayment3+stressPayment4+splatkaILSMesacne+triPercPovolenychPrecerpani+triPercPovolenychLimitov));
-    // alert(triPercPovolenychPrecerpani);
+    // alert(pocetNeplnoletychDeti);
     // alert(rozdielPrijmovZavazkov);  
     // document.getElementById("vysledokTabulka").rows[2].cells[1].innerHTML = (rozdielPrijmovZavazkov.toFixed(2)+'€'); //console.log(toCommas(123456789));
     document.getElementById("vysledokTabulka").rows[2].cells[1].innerHTML = toSpaces(rozdielPrijmovZavazkov.toFixed(2).replace('.',',')+'€'); //(rozdielPrijmovZavazkov.toFixed(2)+'€'); //console.log(toCommas(123456789));
@@ -745,8 +753,8 @@ document.getElementById("typSplatok").addEventListener("change",checkVisibilityU
 document.getElementById("typSplatok").addEventListener("change",checkLifeCosts);
 
 
-document.getElementById("pocetNeplnoletychDeti").addEventListener("blur",checkVisibilityUver);
-document.getElementById("pocetNeplnoletychDeti").addEventListener("blur",checkLifeCosts);
+document.getElementById("pocetNeplnoletychDeti").addEventListener("change",checkVisibilityUver);
+document.getElementById("pocetNeplnoletychDeti").addEventListener("change",checkLifeCosts);
 
 document.getElementById("cistyPrijemZiadatela").addEventListener("blur",checkVisibilityUver);
 document.getElementById("cistyPrijemZiadatela").addEventListener("blur",checkLifeCosts);
