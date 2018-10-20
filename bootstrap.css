@@ -7877,6 +7877,18 @@ button.bg-dark:focus {
   {
     margin-right: 0.5rem !important;
   }
+  .mr-sm-2_6,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
+  {
+    margin-right: 0.5rem !important;
+  }
+  .mr-sm-2_7,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
+  {
+    margin-right: 0.5rem !important;
+  }
+  .mr-sm-2_8,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
+  {
+    margin-right: 0.5rem !important;
+  }
   .mr-sm-mr-sm-2_collapseOne1,       /*dx - kvôli formátovaniu čísiel cez css štýly - každý osobitne*/
   {
     margin-right: 0.5rem !important;
