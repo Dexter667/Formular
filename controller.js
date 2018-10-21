@@ -39,7 +39,7 @@ anElement61 = new AutoNumeric('.mr-sm-2_6 > input', 0, {
     emptyInputBehavior: "min",
     maximumValue: "20",
     minimumValue: "0",
-    aPad: "false"   //no decimals
+    allowDecimalPadding: "false"   //no decimals
 });
 
 anElement62 = new AutoNumeric('.mr-sm-2_7 > input', 0, {
@@ -47,7 +47,7 @@ anElement62 = new AutoNumeric('.mr-sm-2_7 > input', 0, {
     emptyInputBehavior: "min",
     maximumValue: "20",
     minimumValue: "0",
-    aPad: "false"   //no decimals
+    allowDecimalPadding: "false"   //no decimals
 });
 
 anElement63 = new AutoNumeric('.mr-sm-2_8 > input', 0, {
@@ -55,7 +55,7 @@ anElement63 = new AutoNumeric('.mr-sm-2_8 > input', 0, {
     emptyInputBehavior: "min",
     maximumValue: "20",
     minimumValue: "0",
-    aPad: "false"   //no decimals
+    allowDecimalPadding: "false"   //no decimals
 });
 
 anElement6 = new AutoNumeric('.mr-sm-2_collapseOne1 > input', 25000, {
@@ -401,6 +401,17 @@ function checkPaymentType(){
     }
     }
 
+//Výpočet W-note
+
+// function wNote(){
+//     var arrCiastkovaZnamkaDlzkaZamestnania = [[0,'5'],[2,'4.5'],[]]
+//     // Uses the usual "for" loop to iterate
+    
+//     for(var i= 0, l = arr.length; i< l; i++){
+// 	console.log(arr[i]);
+// }
+// }
+
 //Výpočet stresovanej splátky 1 Variant 1 - navýšenie splátky percentom v počte zostávajúcich rokov
 function stressTest1Var1 (){  
     
@@ -673,8 +684,8 @@ function checkLifeCosts(){
     var zivMinPlnoletaOsoba = 205.07;
     var zivMinNezaopatreneDieta = 93.61;
     var zivMinPlnoletaOsobaDalsia = 143.06;
-    var pocetNeplnoletychDeti = document.getElementById("pocetNeplnoletychDeti").value;
-    var pocetPlnoletychNezaopatrenychDeti = document.getElementById("pocetPlnoletychNezaopatrenychDeti").value;
+    var pocetNeplnoletychDeti = parseInt((document.getElementById('pocetNeplnoletychDeti').value).replace(/ /g,'').replace(/,/g,'.')); //document.getElementById("pocetNeplnoletychDeti").value;
+    var pocetPlnoletychNezaopatrenychDeti = parseInt((document.getElementById('pocetPlnoletychNezaopatrenychDeti').value).replace(/ /g,'').replace(/,/g,'.')); //document.getElementById("pocetPlnoletychNezaopatrenychDeti").value;
     var pocetPlnoletychVyzivovanychOsob = parseInt((document.getElementById('pocetVyzivovanychOsob').value).replace(/ /g,'').replace(/,/g,'.')) + 1;
     var c1Visibility = $('#collapseOne').is(":visible");
     var c2Visibility = $('#collapseTwo').is(":visible");
@@ -721,7 +732,7 @@ function checkLifeCosts(){
 
     //náklady na živ. minimum žiadateľ + dospelé vyživované osoby
     if(pocetPlnoletychVyzivovanychOsob > 1){
-        var nakladyNaZivotnePotrebyDospely = (zivMinPlnoletaOsobaDalsia*(pocetPlnoletychVyzivovanych-1) + zivMinPlnoletaOsoba);
+        var nakladyNaZivotnePotrebyDospely = (zivMinPlnoletaOsobaDalsia*(pocetPlnoletychVyzivovanychOsob-1) + zivMinPlnoletaOsoba);
     }
     else{
         if(pocetPlnoletychVyzivovanychOsob == 1){
@@ -753,7 +764,16 @@ function checkLifeCosts(){
     var koeficientSchopnostiSplacat = (splatkaSpoludlznik+stressPayment1+stressPayment2+stressPayment3+stressPayment4+splatkaILSMesacne+triPercPovolenychPrecerpani+triPercPovolenychLimitov)/(mesacnyPrijem-nakladyNaZivotnePotreby);
     var celkovaZadlzenost =(vyskaUveruZiadostILS+zostatokIstinyCisty1+zostatokIstinyCisty2+zostatokIstinyCisty3+zostatokIstinyCisty4+povolenePrecerpania+nevycerpanePovolenePrecerpania+nevycerpanePovolenePrecerpaniaKK);
     var osemNasobokPrijmu = mesacnyPrijem*96;
-    alert(osemNasobokPrijmu);
+    
+    if (koeficientSchopnostiSplacat<=1 && koeficientSchopnostiSplacat>=0 && celkovaZadlzenost < osemNasobokPrijmu){
+        var koKriteriumDTI = true;
+        }
+    else {
+        var koKriteriumDTI = false;
+    }
+    
+    console.log(osemNasobokPrijmu);
+    // alert(koKriteriumDTI);
     document.getElementById("vysledokTabulka").rows[1].cells[1].innerHTML = toSpaces(koeficientSchopnostiSplacat.toFixed(2).replace('.',','));
     document.getElementById("vysledokTabulka").rows[2].cells[1].innerHTML = toSpaces(rozdielPrijmovZavazkov.toFixed(2).replace('.',',')+'€');
     }
@@ -762,16 +782,20 @@ function checkLifeCosts(){
         element.addEventListener("blur", checkLeasingToRetirementDate);
 });
 
-[ukoncenieZmluvy1,koniecAktualnejFixacie1].forEach(function(element) {
+[ukoncenieZmluvy1,koniecAktualnejFixacie1,zabezpecenyNehnutelnostou1].forEach(function(element) {
     element.addEventListener("blur", checkVisibilityUver);
 });
 
-[ukoncenieZmluvy1,koniecAktualnejFixacie1].forEach(function(element) {
+[ukoncenieZmluvy1,koniecAktualnejFixacie1,zabezpecenyNehnutelnostou1].forEach(function(element) {
     element.addEventListener("blur", checkLifeCosts);
 });
 
-[,pohlavie].forEach(function(element) {
+[pohlavie].forEach(function(element) {
     element.addEventListener("change", checkGender);
+});
+
+[typSplatok].forEach(function(element) {
+    element.addEventListener("change", checkPaymentType);
 });
     
 [inputDatumNarodenia,pohlavie,dlzkaFinancovania,pocetVychovanych].forEach(function(element) {
@@ -782,15 +806,24 @@ function checkLifeCosts(){
     element.addEventListener("change", checkLeasingToRetirementDate);
 });
 
-[cistyPrijemZiadatela,prijemSpoludlznika,typSplatok,dlzkaFinancovania,lblSplatkaILS,vyskaUveruILS,splatkaUveru1].forEach(function(element) {
+[pocetNeplnoletychDeti,pocetPlnoletychNezaopatrenychDeti,pocetVyzivovanychOsob,cistyPrijemZiadatela,prijemSpoludlznika,typSplatok,dlzkaFinancovania,lblSplatkaILS,vyskaUveruILS, 
+    vycerpanePovolenePrecerpanieKK, schvaleneNevycerpanePovolenePrecerpanie, schvaleneUveroveRamceKK, splatkaSpoludlznik,
+    zostatokIstinyUrok1,urokovaMiera1,zostatokIstiny1,splatkaUveru1,
+    zostatokIstinyUrok2,urokovaMiera2,zostatokIstiny2,splatkaUveru2,
+    zostatokIstinyUrok3,urokovaMiera3,zostatokIstiny3,splatkaUveru3,
+    zostatokIstinyUrok4,urokovaMiera4,zostatokIstiny4,splatkaUveru4].forEach(function(element) {
     element.addEventListener("change", checkVisibilityUver);
  });
 
-[cistyPrijemZiadatela,prijemSpoludlznika,typSplatok,dlzkaFinancovania,lblSplatkaILS,vyskaUveruILS,splatkaUveru1].forEach(function(element) {
+[pocetNeplnoletychDeti,pocetPlnoletychNezaopatrenychDeti,pocetVyzivovanychOsob,cistyPrijemZiadatela,prijemSpoludlznika,typSplatok,dlzkaFinancovania,lblSplatkaILS,vyskaUveruILS, 
+    vycerpanePovolenePrecerpanieKK, schvaleneNevycerpanePovolenePrecerpanie, schvaleneUveroveRamceKK, splatkaSpoludlznik,
+    zostatokIstinyUrok1,urokovaMiera1,zostatokIstiny1,splatkaUveru1,
+    zostatokIstinyUrok2,urokovaMiera2,zostatokIstiny2,splatkaUveru2,
+    zostatokIstinyUrok3,urokovaMiera3,zostatokIstiny3,splatkaUveru3,
+    zostatokIstinyUrok4,urokovaMiera4,zostatokIstiny4,splatkaUveru4].forEach(function(element) {
     element.addEventListener("change", checkLifeCosts);
  });
 
-//,,zostatokIstinyPlusUrok1,urokovaMiera1,zostatokIstiny1,splatkaUveru1,zabezpecenyNehnutelnostou1
 
 
 
