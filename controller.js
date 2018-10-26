@@ -401,20 +401,114 @@ function checkPaymentType(){
     }
     }
 
-//Výpočet W-note
 
-// function wNote(){
-//     var arrCiastkovaZnamkaDlzkaZamestnania = [[0,'5'],[2,'4.5'],[]]
-//     // Uses the usual "for" loop to iterate
+function wNote(){
+
+//Výpočet W-note - čiastková: mesiace v zamestnaní
+    var wNote1,wNote2,wNote3,wNote4;
+
+    // function wNoteMesiaceZamestnany(){
+        var arrCiastkovaZnamkaDlzkaZamestnania = [[0,5],[2,4.5],[5,4],[8,3.5],[11,3],[23,2.5],[29,2],[35,1.5],[999,1]];
+        var iPocetMesiacovZamestnany = document.getElementById("pocetMesiacovZamestany").value;
+        var l1 = arrCiastkovaZnamkaDlzkaZamestnania.length;
+            
+        for(var i = 0; i<l1; i++){
+
+            if(iPocetMesiacovZamestnany<=(arrCiastkovaZnamkaDlzkaZamestnania[i][0])){
+                // console.log(arrCiastkovaZnamkaDlzkaZamestnania[i][1]);
+                wNote1 = arrCiastkovaZnamkaDlzkaZamestnania[i][1];
+                break;
+            }
+        }
+    // }
     
-//     for(var i= 0, l = arr.length; i< l; i++){
-// 	console.log(arr[i]);
-// }
-// }
+    // //Výpočet W-note - čiastková: platobná disciplína
 
-//Výpočet stresovanej splátky 1 Variant 1 - navýšenie splátky percentom v počte zostávajúcich rokov
+        var arrCiastkovaZnamkaPlatobnaDisciplina = [[4,1],[10,1.5],[15,2],[20,2.5],[25,3.5],[30,4],[60,4.5],[9999,5]];
+        var iPocetDniOmeskania = document.getElementById("pocetDniOmeskania").value;
+        var l2 = arrCiastkovaZnamkaPlatobnaDisciplina.length;
+        var novyKlient = (document.getElementById("typZakaznika").value == "Nový") ? true: false;
+
+        if(novyKlient == true){
+            // console.log(3);
+            wNote2 = 3;
+        }
+        else{
+            for(var i = 0; i<l2; i++){
+
+                if(iPocetDniOmeskania<=(arrCiastkovaZnamkaPlatobnaDisciplina[i][0])){
+                    // console.log(arrCiastkovaZnamkaPlatobnaDisciplina[i][1]);
+                    wNote2 = arrCiastkovaZnamkaPlatobnaDisciplina[i][1];
+                    break;
+                }
+            }
+        }
+    
+    // //Výpočet W-note - čiastková: vek
+
+        var myDate = new Date();
+        var dateDatumNarodenia = new Date(document.getElementById('inputDatumNarodenia').value);
+        var vek = Math.floor((new Date() - new Date(dateDatumNarodenia).getTime()) / 31556925994)
+
+        // console.log(getAge);
+        var arrCiastkovaZnamaVek = [[71,5],[60,4.5],[55,2.5],[45,2],[40,1.5],[35,1],[30,3],[25,3.5],[20,4],[0,5]];
+        var l3 = arrCiastkovaZnamaVek.length;
+            
+        for(var i = 0; i<l3; i++){
+
+            if(vek>=(arrCiastkovaZnamaVek[i][0])){
+                // console.log(arrCiastkovaZnamaVek[i][1]);
+                wNote3 = arrCiastkovaZnamaVek[i][1];
+                break;
+            }
+        }
+
+    // //Výpočet W-note - čiastková: príjem
+
+        var arrCiastkovaZnamkaPrijem = [[0.5,5],[1,4.5],[1.5,4],[2,3.5],[2.5,3],[3,2.5],[3.5,2],[4,1.5],[9999,1]];
+        var l4 = arrCiastkovaZnamkaPrijem.length;
+        var mesacnyPrijem = parseFloat((document.getElementById('cistyPrijemZiadatela').value).replace(/ /g,'').replace(/,/g,'.'));
+        var mesacnaSplatka = parseFloat((document.getElementById('splatkaILS').value).replace(/ /g,'').replace(/,/g,'.'));
+        var dlzkaFinancovania = parseFloat((document.getElementById('dlzkaFinancovania').value).replace(/ /g,'').replace(/,/g,'.'));
+
+        //mesačná splátka
+        if (document.getElementById('typSplatok').value == "Pravidelné"){
+            var splatkaILSMesacne = mesacnaSplatka; 
+        }
+        else {
+            var splatkaILSMesacne = mesacnaSplatka/dlzkaFinancovania; //v prípade, že je typ splátok 'Nepravidelné', tak sa v poli mesacnej splátky uvádza suma splátok s DPH a poistným a berie sa podiel mesačnej splátky a dĺžky financovania
+        }
+
+        var prijemSplatka = mesacnyPrijem/splatkaILSMesacne;
+
+        for(var i = 0; i<l4; i++){
+
+            if(prijemSplatka<(arrCiastkovaZnamkaPrijem[i][0])){
+                // console.log(arrCiastkovaZnamkaPrijem[i][1]);
+                wNote4 = arrCiastkovaZnamkaPrijem[i][1];
+                break;
+            }
+        }
+
+    // console.log(wNote1,wNote2,wNote3,wNote4);
+    var wNote = ((wNote1*0.1) + (wNote2*0.15)+(wNote3*0.15)+(wNote4*0.6)).toFixed(2);
+    var arrwNote = [[1.63,1.5],[1.88,1.8],[2.13,2],[2.38,2.2],[2.63,2.5],[2.88,2.8],[3.13,3],[3.38,3.2],[3.63,3.5],[3.88,3.8],[4.13,4],[4.38,4.2],[4.63,4.5],[999,5]];
+    var l5 = arrwNote.length;
+
+    for(var i = 0; i<l5; i++){
+        if(wNote<(arrwNote[i][0])){
+            var wNoteFinal = arrwNote[i][1];
+            break;
+        }
+    }
+    document.getElementById("vysledokTabulka").rows[3].cells[1].innerHTML = toSpaces(wNoteFinal.toFixed(2).replace('.',','));
+    console.log(wNoteFinal);
+}
+
+
+    //Výpočet stresovanej splátky 1 Variant 1 - navýšenie splátky percentom v počte zostávajúcich rokov
 function stressTest1Var1 (){  
-    
+        
     var buffPayment1 = ((document.getElementById("splatkaUveru1").value).replace(/ /g, '')).replace(/,/, '.');
     var d1 = new Date();
     var d2 = new Date(document.getElementById("ukoncenieZmluvy1").value);
@@ -429,8 +523,8 @@ function stressTest1Var1 (){
     }
     else{    
         stressPayment1Var1 = Math.round(buffPayment1*mult1*mult2*100)/100;
-    }   
-}
+        }   
+    }
 
 ////Výpočet stresovanej splátky 1 Variant 2 - navýšenie úrokovej sadzby
 function stressTest1Var2 (){
@@ -823,6 +917,14 @@ function checkLifeCosts(){
     zostatokIstinyUrok4,urokovaMiera4,zostatokIstiny4,splatkaUveru4].forEach(function(element) {
     element.addEventListener("change", checkLifeCosts);
  });
+
+ [cistyPrijemZiadatela,splatkaILS].forEach(function(element) {
+    element.addEventListener("change", wNote);
+});
+
+[inputDatumNarodenia,pocetMesiacovZamestany,typZakaznika,pocetDniOmeskania,typSplatok].forEach(function(element) {
+    element.addEventListener("blur", wNote);
+});
 
 
 
